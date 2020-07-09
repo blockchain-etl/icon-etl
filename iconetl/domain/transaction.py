@@ -22,13 +22,20 @@
 
 class IcxTransaction(object):
     def __init__(self):
-        self.hash = None
-        self.block_hash = None
-        self.block_number = None
-        self.transaction_index = None
+        self.version = None
         self.from_address = None
         self.to_address = None
         self.value = None
-        self.fee = None
+        self.step_limit = None
         self.timestamp = None
+        self.block_timestamp = None
+        self.nid = None
+        self.nonce = None
+        self.hash = None
+        self.transaction_index = None
+        self.block_hash = None
+        self.block_number = None
+        self.fee = None
         self.signature = None
+        self.data_type = None
+        self.data = None

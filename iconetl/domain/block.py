@@ -29,7 +29,6 @@ class IcxBlock(object):
         self.timestamp = None
         self.version = None
         self.transactions = None
-        self.transaction_count = None
         self.peer_id = None
         self.signature = None
         self.next_leader = None
