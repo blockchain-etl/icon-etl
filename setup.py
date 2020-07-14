@@ -9,7 +9,7 @@ setup(
     author="Richard Mah",
     author_email="richard@richardmah.com",
     description="",
-    python_requires=">=3.6.0,<3.8.0",
+    python_requires=">=3.6.0,<=3.8.0",
     install_requires=[
         "blockchain-etl-common==1.3.0",
         "requests==2.20.0",
