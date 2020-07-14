@@ -1,0 +1,55 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "version": "0.5",
+        "height": 14473622,
+        "signature": "+dCMqG/IxJv+XFogxPYCr0u/tckmnoOu/apGmXgy73dv7i3vxLSn5VeY5MKNIkem8j4xwI101uEWJW4nIQfkvwA=",
+        "prev_block_hash": "d63bc78670502eb7b972d53c4d6b6c64e33dcdeb0f4063cdf78a7e726d142c19",
+        "merkle_tree_root_hash": "dbe5f31a9dd4dd3be021d3b721574e641e9e56dcf11a313d00192efe7ae47417",
+        "time_stamp": 1580772763174347,
+        "confirmed_transaction_list": [
+            {
+                "version": "0x3",
+                "timestamp": "0x59db4570505cb",
+                "dataType": "base",
+                "data": {
+                    "prep": {
+                        "irep": "0x9bf0501d3dc018c22a3",
+                        "rrep": "0x264",
+                        "totalDelegation": "0xaa2a34a3615e2751385862",
+                        "value": "0x3fc45cbbffb08081"
+                    },
+                    "result": {
+                        "coveredByFee": "0x5d392416e8000",
+                        "coveredByOverIssuedICX": "0x0",
+                        "issue": "0x3fbe8929be420081"
+                    }
+                },
+                "txHash": "0xac67fcb681a43009aabedf990e069c4e8ce33fb609478b0a3f7969acfa081589"
+            },
+            {
+                "version": "0x3",
+                "from": "hx958cf98be5ad3beb09d4d1bf97907faa0ed2029a",
+                "to": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "timestamp": "0x59db456a5cd70",
+                "nid": "0x1",
+                "stepLimit": "0x2625a00",
+                "dataType": "call",
+                "value": "0xd02ab486cedc0000",
+                "data": {
+                    "method": "bet_on_numbers",
+                    "params": {
+                        "numbers": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "user_seed": ""
+                    }
+                },
+                "signature": "W5lDYVwWi7/L/r4gj8KBOA7rb6gOlT4jgciq0pWkdu8cjbJc1mhaotR0xYqZW5kO8C0mFNKpHV5IAZcQIjiYPQA=",
+                "txHash": "0x1bc254f4fad542876512be4729a0a9beec471c57d207b5cce6fc7b12005d5918"
+            }
+        ],
+        "block_hash": "f6e8902d5c2a83624927e372c3c84a84cc71657c91c01dd422ab34315daf70af",
+        "peer_id": "hxbc9c73670c79e8f6f8060551a792c2cf29a8c491",
+        "next_leader": "hxc453700b9bd823d7f7175808a0986c0e3a45f2b4"
+    },
+    "id": 1234
+}

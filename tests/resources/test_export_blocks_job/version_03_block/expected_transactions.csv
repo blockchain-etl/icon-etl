@@ -1,0 +1,2 @@
+version,from_address,to_address,value,step_limit,timestamp,nid,nonce,hash,transaction_index,block_hash,block_number,fee,signature,data_type,data
+0x3,,,0,,0x59a579852c73e,,,0xf36d26ac9996f66362a87584ff90c3303ed60a1ff4eaf37f654d3e390b9252ea,,e1efd9e24fe1015694b86f8a6f1419ebcf17789d76e55914cf442f63948e1b77,12640760,,,base,"{'prep': {'irep': '0x9d895c8fd285833d818', 'rrep': '0x28f', 'totalDelegation': '0x98babeb11e0b1fc3b8035a', 'value': '0x3ebf47965dcda017'}, 'result': {'coveredByFee': '0x0', 'coveredByOverIssuedICX': '0x0', 'issue': '0x3ebf47965dcda017'}}"
