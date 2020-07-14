@@ -1,0 +1,99 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txHash": "0x341884ab68c291df94ca9ce8e4948b06ed80652519f0a228b30ec7bda64d001c",
+        "blockHeight": "0x1465e17",
+        "blockHash": "0xd00cc3f606000539ca7ef74f3163d6f85f748fb93321669a639264648660962e",
+        "txIndex": "0x5",
+        "to": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+        "stepUsed": "0x85f84",
+        "stepPrice": "0x2540be400",
+        "cumulativeStepUsed": "0x1f2bc4",
+        "eventLogs": [
+            {
+                "scoreAddress": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "indexed": [
+                    "BetSource(Address,int)",
+                    "hx9a536f0a97cb3f04a32153b24927067eabc9d2b7",
+                    "0x5aa6a350e4c10"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "indexed": [
+                    "ICXTransfer(Address,Address,int)",
+                    "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                    "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                    "0x1158e460913d00000"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "indexed": [
+                    "FundTransfer(Address,int,str)",
+                    "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                    "0x1158e460913d00000"
+                ],
+                "data": [
+                    "Sending icx to Roulette"
+                ]
+            },
+            {
+                "scoreAddress": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "indexed": [
+                    "BetPlaced(int,int,int)",
+                    "0x1158e460913d00000",
+                    "0x63",
+                    "0x5"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "indexed": [
+                    "BetResult(str,int,int)",
+                    "0.79063",
+                    "0x4f",
+                    "0x11fc81006b792f286"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "indexed": [
+                    "PayoutAmount(int,int,int)",
+                    "0x11fc81006b792f286",
+                    "0x11fc81006b792f286",
+                    "0x0"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "ICXTransfer(Address,Address,int)",
+                    "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                    "hx9a536f0a97cb3f04a32153b24927067eabc9d2b7",
+                    "0x11fc81006b792f286"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "FundTransfer(Address,int,str)",
+                    "hx9a536f0a97cb3f04a32153b24927067eabc9d2b7",
+                    "0x11fc81006b792f286"
+                ],
+                "data": [
+                    "Player Winnings from cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6."
+                ]
+            }
+        ],
+        "logsBloom": "0x000000000000020000a00001000000000000000000000000004000000000001000000000000018400000000000000000010102a0000004000000080840000000400000000000100800000000001000000000000000000000000000003000000000024000000400000000000000000000000000004000000000000000000000000050000000080000010010240001000200012000800000000020002010000000000004100000280000000000000008000c00000000000000400000000204000000040000200041000000000000000080000000000007800000000000100000040000000000000100000410040011000020000000000800080010000000008000",
+        "status": "0x1"
+    },
+    "id": 1234
+}
