@@ -1,0 +1,41 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txHash": "0x3680f3262fed98a4bc169c11b6ac66778da43c889d47a673d252362138715da9",
+        "blockHeight": "0x1465e17",
+        "blockHash": "0xd00cc3f606000539ca7ef74f3163d6f85f748fb93321669a639264648660962e",
+        "txIndex": "0x0",
+        "to": "hx1000000000000000000000000000000000000000",
+        "stepUsed": "0x0",
+        "stepPrice": "0x0",
+        "cumulativeStepUsed": "0x0",
+        "eventLogs": [
+            {
+                "scoreAddress": "cx0000000000000000000000000000000000000000",
+                "indexed": [
+                    "PRepIssued(int,int,int,int)"
+                ],
+                "data": [
+                    "0x2f10c589aab688f0eb3",
+                    "0x1c6",
+                    "0xf392803630ebb00e47be6d",
+                    "0x2cdca3071fbde122"
+                ]
+            },
+            {
+                "scoreAddress": "cx0000000000000000000000000000000000000000",
+                "indexed": [
+                    "ICXIssued(int,int,int,int)"
+                ],
+                "data": [
+                    "0xf02cc091ae000",
+                    "0x0",
+                    "0x2ccda03b16a30122",
+                    "-0x1"
+                ]
+            }
+        ],
+        "status": "0x1"
+    },
+    "id": 1234
+}
