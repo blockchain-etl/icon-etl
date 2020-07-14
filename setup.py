@@ -16,5 +16,10 @@ setup(
         "python-dateutil==2.7.0",
         "click==7.0",
         "iconsdk >= 1.3.2",
+        "web3 >= 5.5.0",
     ],
+    extras_require={
+        "streaming": ["timeout-decorator==0.4.1", "sqlalchemy==1.3.13",],
+        "dev": ["pytest~=4.3.0"],
+    },
 )

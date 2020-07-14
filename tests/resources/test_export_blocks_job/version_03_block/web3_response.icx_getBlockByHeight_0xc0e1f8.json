@@ -1,0 +1,36 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "version": "0.3",
+        "height": 12640760,
+        "signature": "nS5yBgL/RrXqBwQGV5FrHNyz8D8jgNZX7UykLsqGk1pUwbSCbtTAQqum3pqRclyZV0CoFxTrkNhKGEn2ToJ/9gE=",
+        "prev_block_hash": "73ccf2a9e8c922b29b68595282216769ef4d20976ef987bf8bdfff053fcdd058",
+        "merkle_tree_root_hash": "f36d26ac9996f66362a87584ff90c3303ed60a1ff4eaf37f654d3e390b9252ea",
+        "time_stamp": 1577075891947326,
+        "confirmed_transaction_list": [
+            {
+                "version": "0x3",
+                "timestamp": "0x59a579852c73e",
+                "dataType": "base",
+                "data": {
+                    "prep": {
+                        "irep": "0x9d895c8fd285833d818",
+                        "rrep": "0x28f",
+                        "totalDelegation": "0x98babeb11e0b1fc3b8035a",
+                        "value": "0x3ebf47965dcda017"
+                    },
+                    "result": {
+                        "coveredByFee": "0x0",
+                        "coveredByOverIssuedICX": "0x0",
+                        "issue": "0x3ebf47965dcda017"
+                    }
+                },
+                "txHash": "0xf36d26ac9996f66362a87584ff90c3303ed60a1ff4eaf37f654d3e390b9252ea"
+            }
+        ],
+        "block_hash": "e1efd9e24fe1015694b86f8a6f1419ebcf17789d76e55914cf442f63948e1b77",
+        "peer_id": "hxbc9c73670c79e8f6f8060551a792c2cf29a8c491",
+        "next_leader": "hxbc9c73670c79e8f6f8060551a792c2cf29a8c491"
+    },
+    "id": 1234
+}
