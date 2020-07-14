@@ -28,6 +28,7 @@ class IcxReceipt(object):
         self.block_number = None
         self.cumulative_step_used = None
         self.step_used = None
+        self.step_price = None
         self.score_address = None
         self.logs = []
         self.status = None
