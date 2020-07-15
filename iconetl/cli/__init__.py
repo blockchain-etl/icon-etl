@@ -21,13 +21,13 @@
 
 
 import click
-from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
 from iconetl.cli.export_blocks_and_transactions import \
     export_blocks_and_transactions
+from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
 
 
 @click.group()
-@click.version_option(version="0.0.1-alpha.1")
+@click.version_option(version="0.0.1-alpha.2")
 @click.pass_context
 def cli(ctx):
     pass
