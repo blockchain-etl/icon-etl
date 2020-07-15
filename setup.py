@@ -1,10 +1,10 @@
-from setuptools import setup
+from setuptools import find_packages, setup
 
 setup(
-    name="iconetl",
-    version="0.0.1",
-    packages=[""],
-    url="",
+    name="icon-etl",
+    version="0.0.1-alpha.1",
+    packages=find_packages(exclude=["schemas", "tests"]),
+    url="https://github.com/insight-icon/icon-etl",
     license="",
     author="Richard Mah",
     author_email="richard@richardmah.com",

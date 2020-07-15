@@ -20,15 +20,37 @@
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-class IcxReceipt(object):
-    def __init__(self):
-        self.transaction_hash = None
-        self.transaction_index = None
-        self.block_hash = None
-        self.block_number = None
-        self.cumulative_step_used = None
-        self.step_used = None
-        self.step_price = None
-        self.score_address = None
-        self.logs = []
-        self.status = None
+from blockchainetl_common.jobs.exporters.composite_item_exporter import \
+    CompositeItemExporter
+
+RECEIPT_FIELDS_TO_EXPORT = [
+    "transaction_hash",
+    "transaction_index",
+    "block_hash",
+    "block_number",
+    "cumulative_step_used",
+    "step_used",
+    "score_address",
+    "status",
+]
+
+LOG_FIELDS_TO_EXPORT = [
+    "log_index",
+    "transaction_hash",
+    "transaction_index",
+    "block_hash",
+    "block_number",
+    "address",
+    "data",
+    "indexed",
+]
+
+
+def receipts_and_logs_item_exporter(receipts_output=None, logs_output=None):
+    return CompositeItemExporter(
+        filename_mapping={"receipt": receipts_output, "log": logs_output},
+        field_mapping={
+            "receipt": RECEIPT_FIELDS_TO_EXPORT,
+            "log": LOG_FIELDS_TO_EXPORT,
+        },
+    )
