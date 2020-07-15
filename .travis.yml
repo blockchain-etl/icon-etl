@@ -2,11 +2,19 @@ language: python
 dist: xenial
 matrix:
   include:
-    - python: "3.6"
-      env: TOX_POSARGS="-e py36"
-    - python: "3.7"
-      env: TOX_POSARGS="-e py37"
+  - python: '3.6'
+    env: TOX_POSARGS="-e py36"
+  - python: '3.7'
+    env: TOX_POSARGS="-e py37"
 install:
-  - travis_retry pip install tox
+- travis_retry pip install tox
 script:
-  - tox $TOX_POSARGS
+- tox $TOX_POSARGS
+deploy:
+  provider: pypi
+  on:
+    branch: master
+    tags: true
+  username: "__token__"
+  password:
+    secure: uZTFz29wHnH3SrAM0fWmjSzvP7DsrjvH3P0xcdjsEOKZ6OkcSfTeK9yYeyC31Ki1PmAFHgdA30+gVIEso1detxfe7zsp1EB+Kgf3mRDJq9kEpM547DvzzPSrTwy6rjdJHtpt68oUfVCoqSXXGNEEs5ojMCLhCIB6AfkrHStaoFPFQn6YOvuXt1ipWuBn8GdBgOsFbbsYOBpGjiaT5X8ym2F+19FiYVGBlB83GUDOgAUGKXGBFCiBckjoVoKSbP07FQiOKqwHIvusc5vIjFNpMdZ3aYS0nADNkZeqobTlau8tjTBjaAEdywNgWYcny6vl+uWI88SIpS+hZylEK6gRaoG2TwZWyQrdlIx9q2o1A+kBaoTKowbwV1+h5U0G/lQvuH9i5jV+1EpIlq7BA2FQevDg5GX4lJ7SJPsiTJSYhOCYVXwm1KpJAnbtkmzflclsoJ25RPjLOYvwaava+qKKZk3xKB5rwzu/KOVbOQui8CbVu2G3zal8MlaRtiBX8WjXWAu2lMgWecDZjEj1N8NVF8cJ4X8IBUutpogXHnhABbH6jVBbJUyZu/3AXzKIAy/1bRNMz5mMFooMlQ8xmUwdCHi3emSrazQ/W6s0jm2D8GCx/ka4dQufLj+9YcKRcayVwh0CUrpiPog0tgpuhulfpFHsazNX8HMOKmyiXF3KQSI=
