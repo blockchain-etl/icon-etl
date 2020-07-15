@@ -13,7 +13,6 @@ script:
 deploy:
   provider: pypi
   on:
-    branch: master
     tags: true
   username: "__token__"
   password:
