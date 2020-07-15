@@ -22,6 +22,8 @@
 
 import click
 from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
+from iconetl.cli.export_blocks_and_transactions import \
+    export_blocks_and_transactions
 
 
 @click.group()
@@ -32,3 +34,4 @@ def cli(ctx):
 
 
 cli.add_command(export_receipts_and_logs, "export_receipts_and_logs")
+cli.add_command(export_blocks_and_transactions, "export_blocks_and_transactions")
