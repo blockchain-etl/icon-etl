@@ -11,10 +11,9 @@ long_description = read("README.md") if os.path.isfile("README.md") else ""
 
 setup(
     name="icon-etl",
-    version="0.0.1-alpha.2",
+    version="0.0.1-alpha.3",
     packages=find_packages(exclude=["schemas", "tests"]),
     url="https://github.com/insight-icon/icon-etl",
-    license="",
     author="Richard Mah",
     author_email="richard@richardmah.com",
     description="Tools for exporting ICON blockchain data to CSV or JSON",
@@ -37,4 +36,11 @@ setup(
         "Bug Reports": "https://github.com/insight-icon/icon-etl/issues",
         "Source": "https://github.com/insight-icon/icon-etl",
     },
+    classifiers=[
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+    ],
 )

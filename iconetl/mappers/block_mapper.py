@@ -48,9 +48,9 @@ class IcxBlockMapper(object):
         if "confirmed_transaction_list" in json_dict:
             block.transactions = [
                 self.transaction_mapper.json_dict_to_transaction(
-                    tx, block.hash, block.number, block.timestamp
+                    tx, idx, block.hash, block.number, block.timestamp
                 )
-                for tx in json_dict["confirmed_transaction_list"]
+                for idx, tx in enumerate(json_dict["confirmed_transaction_list"])
                 if isinstance(tx, dict)
             ]
 

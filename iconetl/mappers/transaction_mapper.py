@@ -26,29 +26,33 @@ from iconetl.utils import fix_tx_hash, hex_to_dec
 
 class IcxTransactionMapper(object):
     def json_dict_to_transaction(
-        self, json_dict, block_hash, block_number, block_timestamp
+        self, json_dict, idx, block_hash, block_number, block_timestamp
     ):
         transaction = IcxTransaction()
 
         transaction.version = json_dict.get("version")
         transaction.from_address = json_dict.get("from")
         transaction.to_address = json_dict.get("to")
-        transaction.value = json_dict.get("value", 0)
-        transaction.step_limit = json_dict.get("stepLimit")
+        transaction.value = hex_to_dec(json_dict.get("value", 0))
+        transaction.step_limit = hex_to_dec(json_dict.get("stepLimit"))
         transaction.timestamp = json_dict.get("timestamp")
-        transaction.nid = json_dict.get("nid")
-        transaction.nonce = json_dict.get("nonce")
+        transaction.nid = hex_to_dec(json_dict.get("nid"))
+        transaction.nonce = hex_to_dec(json_dict.get("nonce"))
         if "txHash" in json_dict:
             transaction.hash = fix_tx_hash(json_dict.get("txHash"))
 
         if "tx_hash" in json_dict:
             transaction.hash = fix_tx_hash(json_dict.get("tx_hash"))
 
-        transaction.transaction_index = hex_to_dec(json_dict.get("txIndex"))
+        if json_dict.get("txIndex"):
+            transaction.transaction_index = hex_to_dec(json_dict.get("txIndex"))
+        else:
+            transaction.transaction_index = idx
+
         transaction.block_hash = block_hash
         transaction.block_number = block_number
         transaction.block_timestamp = block_timestamp
-        transaction.fee = json_dict.get("fee")
+        transaction.fee = hex_to_dec(json_dict.get("fee"))
         transaction.signature = json_dict.get("signature")
         transaction.data_type = json_dict.get("dataType")
         transaction.data = json_dict.get("data")
