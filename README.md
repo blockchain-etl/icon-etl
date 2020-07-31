@@ -1,6 +1,10 @@
 # ICON ETL
 
 [![Build Status](https://travis-ci.org/insight-icon/icon-etl.svg?branch=master)](https://travis-ci.org/github/insight-icon/icon-etl)
+[![Pypi Version](https://img.shields.io/pypi/v/icon-etl)](https://pypi.org/project/icon-etl/)
+[![Pypi Version](https://img.shields.io/pypi/l/icon-etl)](https://pypi.org/project/icon-etl/)
+
+
 
 ## Quickstart
 

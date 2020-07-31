@@ -11,7 +11,7 @@ long_description = read("README.md") if os.path.isfile("README.md") else ""
 
 setup(
     name="icon-etl",
-    version="0.0.1-alpha.3",
+    version="0.0.1-alpha.4",
     packages=find_packages(exclude=["schemas", "tests"]),
     url="https://github.com/insight-icon/icon-etl",
     author="Richard Mah",
@@ -43,4 +43,5 @@ setup(
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
     ],
+    entry_points={"console_scripts": ["iconetl=iconetl.cli:cli",],},
 )
