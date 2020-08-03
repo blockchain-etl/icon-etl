@@ -46,6 +46,11 @@ DEFAULT_TX_HASHES = [
     "0x341884ab68c291df94ca9ce8e4948b06ed80652519f0a228b30ec7bda64d001c",
 ]
 
+HTML_TX_HASHES = [
+    "0x16dbc932b601821b08450ad6f228a6a8e1bfd9cf5a361f0bf42ccf4b0b29be7b",
+    "0x1a94bf51895fc4112ccd17f17a382fbe2cc5c0f787595256c98e0669b572c52e",
+]
+
 
 @pytest.mark.parametrize(
     "batch_size,transaction_hashes,output_format,resource_group,web3_provider_type",
@@ -58,6 +63,10 @@ DEFAULT_TX_HASHES = [
         ),
         skip_if_slow_tests_disabled(
             (2, DEFAULT_TX_HASHES, "json", "receipts_with_logs", "public_endpoint")
+        ),
+        (2, HTML_TX_HASHES, "csv", "html_sanitize", "mock"),
+        skip_if_slow_tests_disabled(
+            (2, HTML_TX_HASHES, "csv", "html_sanitize", "mock")
         ),
     ],
 )
