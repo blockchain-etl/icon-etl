@@ -34,7 +34,11 @@ class IcxReceiptLogMapper(object):
         receipt_log.block_hash = blk_hash
         receipt_log.block_number = blk_num
         receipt_log.address = json_dict.get("scoreAddress")
-        receipt_log.data = json_dict.get("data")
+        unsanitized_data = json_dict.get("data")
+        sanitized_data = []
+        for item in unsanitized_data:
+            sanitized_data.append(item.replace("\n", "").replace('"', "'"))
+        receipt_log.data = sanitized_data
         receipt_log.indexed = json_dict.get("indexed")
 
         return receipt_log
