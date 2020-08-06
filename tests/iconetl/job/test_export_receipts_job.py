@@ -65,6 +65,7 @@ HTML_TX_HASHES = [
             (2, DEFAULT_TX_HASHES, "json", "receipts_with_logs", "public_endpoint")
         ),
         (2, HTML_TX_HASHES, "csv", "html_sanitize", "mock"),
+        (2, HTML_TX_HASHES, "json", "html_sanitize", "mock"),
         skip_if_slow_tests_disabled(
             (2, HTML_TX_HASHES, "csv", "html_sanitize", "mock")
         ),
