@@ -30,6 +30,7 @@ RECEIPT_FIELDS_TO_EXPORT = [
     "block_number",
     "cumulative_step_used",
     "step_used",
+    "step_price",
     "score_address",
     "status",
 ]

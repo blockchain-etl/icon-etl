@@ -69,6 +69,7 @@ class IcxReceiptMapper(object):
             "block_number": receipt.block_number,
             "cumulative_step_used": receipt.cumulative_step_used,
             "step_used": receipt.step_used,
+            "step_price": receipt.step_price,
             "score_address": receipt.score_address,
             "status": receipt.status,
         }
