@@ -19,6 +19,8 @@
 #  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+import itertools
+
 from iconetl.misc.retriable_value_error import RetriableValueError
 
 
@@ -85,3 +87,10 @@ def is_retriable_error(error_code):
         return True
 
     return False
+
+
+def pairwise(iterable):
+    """s -> (s0,s1), (s1,s2), (s2, s3), ..."""
+    a, b = itertools.tee(iterable)
+    next(b, None)
+    return zip(a, b)
