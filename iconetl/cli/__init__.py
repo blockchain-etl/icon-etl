@@ -30,7 +30,7 @@ from iconetl.cli.get_block_range_for_timestamps import \
 
 
 @click.group()
-@click.version_option(version="0.0.1-beta.1")
+@click.version_option(version="0.0.1-beta.2")
 @click.pass_context
 def cli(ctx):
     pass
