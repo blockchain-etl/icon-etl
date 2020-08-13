@@ -20,25 +20,39 @@
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
+import csv
+
 import click
+from blockchainetl_common.file_utils import smart_open
 
-from iconetl.cli.export_blocks_and_transactions import export_blocks_and_transactions
-from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
-from iconetl.cli.extract_csv_column import extract_csv_column
-from iconetl.cli.get_block_range_for_date import get_block_range_for_date
-from iconetl.cli.get_block_range_for_timestamps import get_block_range_for_timestamps
+from iconetl.csv_utils import set_max_field_size_limit
 
 
-@click.group()
-@click.version_option(version="0.0.1-beta.2")
-@click.pass_context
-def cli(ctx):
-    pass
+@click.command(context_settings=dict(help_option_names=["-h", "--help"]))
+@click.option(
+    "-i",
+    "--input",
+    default="-",
+    show_default=True,
+    type=str,
+    help="The input file. If not specified stdin is used.",
+)
+@click.option(
+    "-o",
+    "--output",
+    default="-",
+    show_default=True,
+    type=str,
+    help="The output file. If not specified stdout is used.",
+)
+@click.option(
+    "-c", "--column", required=True, type=str, help="The csv column name to extract."
+)
+def extract_csv_column(input, output, column):
+    """Extracts column from given CSV file. Deprecated - use extract_field."""
+    set_max_field_size_limit()
 
-
-cli.add_command(export_receipts_and_logs, "export_receipts_and_logs")
-cli.add_command(export_blocks_and_transactions, "export_blocks_and_transactions")
-
-cli.add_command(get_block_range_for_date, "get_block_range_for_date")
-cli.add_command(get_block_range_for_timestamps, "get_block_range_for_timestamps")
-cli.add_command(extract_csv_column, "extract_csv_column")
+    with smart_open(input, "r") as input_file, smart_open(output, "w") as output_file:
+        reader = csv.DictReader(input_file)
+        for row in reader:
+            output_file.write(row[column] + "\n")
