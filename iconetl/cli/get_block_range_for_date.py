@@ -25,10 +25,10 @@ from datetime import datetime
 import click
 from blockchainetl_common.file_utils import smart_open
 from blockchainetl_common.logging_utils import logging_basic_config
-from iconetl.providers.auto import get_provider_from_uri
-from iconetl.service.icx_service import IcxService
 from iconsdk.icon_service import IconService
 from iconsdk.providers.http_provider import HTTPProvider
+
+from iconetl.service.icx_service import IcxService
 
 logging_basic_config()
 
@@ -58,8 +58,7 @@ logging_basic_config()
 )
 def get_block_range_for_date(provider_uri, date, output):
     """Outputs start and end blocks for given date."""
-    provider = get_provider_from_uri(provider_uri)
-    svc = IconService(HTTPProvider(provider))
+    svc = IconService(HTTPProvider(provider_uri))
     icx_service = IcxService(svc)
 
     start_block, end_block = icx_service.get_block_range_for_date(date)
