@@ -1,15 +1,15 @@
 repos:
--   repo: https://github.com/ambv/black
-    rev: 19.10b0
+-   repo: https://github.com/timothycrosley/isort
+    rev: 5.4.1
     hooks:
-    - id: black
-      args: [--safe]
+    -   id: isort
 -   repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v2.1.0
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
--   repo: https://github.com/timothycrosley/isort
-    rev: 4.3.21-2
+-   repo: https://github.com/ambv/black
+    rev: stable
     hooks:
-    -   id: isort
+    - id: black
+      args: [--safe]
