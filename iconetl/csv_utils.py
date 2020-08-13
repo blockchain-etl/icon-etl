@@ -20,25 +20,20 @@
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-import click
-
-from iconetl.cli.export_blocks_and_transactions import export_blocks_and_transactions
-from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
-from iconetl.cli.extract_csv_column import extract_csv_column
-from iconetl.cli.get_block_range_for_date import get_block_range_for_date
-from iconetl.cli.get_block_range_for_timestamps import get_block_range_for_timestamps
+import csv
+import sys
 
 
-@click.group()
-@click.version_option(version="0.0.1-alpha.4")
-@click.pass_context
-def cli(ctx):
-    pass
+def set_max_field_size_limit():
+    max_int = sys.maxsize
+    decrement = True
+    while decrement:
+        # decrease the maxInt value by factor 10
+        # as long as the OverflowError occurs.
 
-
-cli.add_command(export_receipts_and_logs, "export_receipts_and_logs")
-cli.add_command(export_blocks_and_transactions, "export_blocks_and_transactions")
-
-cli.add_command(get_block_range_for_date, "get_block_range_for_date")
-cli.add_command(get_block_range_for_timestamps, "get_block_range_for_timestamps")
-cli.add_command(extract_csv_column, "extract_csv_column")
+        decrement = False
+        try:
+            csv.field_size_limit(max_int)
+        except OverflowError:
+            max_int = int(max_int / 10)
+            decrement = True
