@@ -55,4 +55,5 @@ def extract_csv_column(input, output, column):
     with smart_open(input, "r") as input_file, smart_open(output, "w") as output_file:
         reader = csv.DictReader(input_file)
         for row in reader:
-            output_file.write(row[column] + "\n")
+            if row[column]:
+                output_file.write(row[column] + "\n")

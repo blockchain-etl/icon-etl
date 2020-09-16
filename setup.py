@@ -11,7 +11,7 @@ long_description = read("README.md") if os.path.isfile("README.md") else ""
 
 setup(
     name="icon-etl",
-    version="0.0.1-beta.4",
+    version="0.0.1-beta.5",
     packages=find_packages(exclude=["schemas", "tests"]),
     url="https://github.com/insight-icon/icon-etl",
     author="Richard Mah",
