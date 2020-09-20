@@ -37,7 +37,8 @@ class IcxReceiptLogMapper(object):
         unsanitized_data = json_dict.get("data")
         sanitized_data = []
         for item in unsanitized_data:
-            sanitized_data.append(item.replace("\n", "").replace('"', "'"))
+            if item:
+                sanitized_data.append(item.replace("\n", "").replace('"', "'"))
         receipt_log.data = sanitized_data
         receipt_log.indexed = json_dict.get("indexed")
 
