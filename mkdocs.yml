@@ -7,5 +7,5 @@ nav:
     - Commands: commands.md
     - Schema: schema.md
     - Limitations: limitations.md
-  theme: readthedocs
-  repo_url: https://github.com/insight-icon/icon-etl
+theme: readthedocs
+repo_url: https://github.com/insight-icon/icon-etl
