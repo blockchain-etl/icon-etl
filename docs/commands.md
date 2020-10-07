@@ -62,3 +62,10 @@ Omit `--receipts-output` or `--logs-output` options if you want to export only l
 You can tune `--batch-size`, `--max-workers` for performance.
 
 [Receipts and logs schema](schema.md#receiptscsv).
+
+#### get_block_range_for_date
+
+```bash
+> iconetl get_block_range_for_date --provider-uri=https://ctz.solidwallet.io/api/v3 --date 2019-01-01
+156585,157566
+```
