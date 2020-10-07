@@ -22,6 +22,7 @@
 
 import click
 
+from iconetl.cli.export_all import export_all
 from iconetl.cli.export_blocks_and_transactions import export_blocks_and_transactions
 from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
 from iconetl.cli.extract_csv_column import extract_csv_column
@@ -30,12 +31,13 @@ from iconetl.cli.get_block_range_for_timestamps import get_block_range_for_times
 
 
 @click.group()
-@click.version_option(version="0.1.1")
+@click.version_option(version="0.1.2")
 @click.pass_context
 def cli(ctx):
     pass
 
 
+cli.add_command(export_all, "export_all")
 cli.add_command(export_receipts_and_logs, "export_receipts_and_logs")
 cli.add_command(export_blocks_and_transactions, "export_blocks_and_transactions")
 
