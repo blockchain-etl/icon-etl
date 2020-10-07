@@ -1,0 +1,11 @@
+site_name: ICON ETL
+nav:
+  - Overview: index.md
+  - Quickstart: quickstart.md
+  - Exporting the Blockchain: exporting-the-blockchain.md
+  - References:
+    - Commands: commands.md
+    - Schema: schema.md
+    - Limitations: limitations.md
+  theme: readthedocs
+  repo_url: https://github.com/insight-icon/icon-etl
