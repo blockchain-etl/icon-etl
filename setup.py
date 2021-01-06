@@ -13,7 +13,7 @@ setup(
     name="icon-etl",
     version="0.1.3",
     packages=find_packages(exclude=["schemas", "tests"]),
-    url="https://github.com/insight-icon/icon-etl",
+    url="https://github.com/blockchain-etl/icon-etl",
     author="Richard Mah",
     author_email="richard@richardmah.com",
     description="Tools for exporting ICON blockchain data to CSV or JSON",
@@ -36,8 +36,8 @@ setup(
         "dev": ["pytest~=4.3.0"],
     },
     project_urls={
-        "Bug Reports": "https://github.com/insight-icon/icon-etl/issues",
-        "Source": "https://github.com/insight-icon/icon-etl",
+        "Bug Reports": "https://github.com/blockchain-etl/icon-etl/issues",
+        "Source": "https://github.com/blockchain-etl/icon-etl",
     },
     classifiers=[
         "Intended Audience :: Developers",
