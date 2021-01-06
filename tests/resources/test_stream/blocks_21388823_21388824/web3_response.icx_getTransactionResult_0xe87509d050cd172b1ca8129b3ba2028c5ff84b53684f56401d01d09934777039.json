@@ -1,0 +1,68 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "txHash": "0xe87509d050cd172b1ca8129b3ba2028c5ff84b53684f56401d01d09934777039",
+        "blockHeight": "0x1465e17",
+        "blockHash": "0xd00cc3f606000539ca7ef74f3163d6f85f748fb93321669a639264648660962e",
+        "txIndex": "0x4",
+        "to": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+        "stepUsed": "0x672dc",
+        "stepPrice": "0x2540be400",
+        "cumulativeStepUsed": "0x16cc40",
+        "eventLogs": [
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "BetSource(Address,int)",
+                    "hx8edc6f20440430ad00c28d398a63e1e7578c1e90",
+                    "0x5aa6a3516197e"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "BetPlaced(int,str)",
+                    "0x22b1c8c1227a0000",
+                    "1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "BetResult(str,str,int)",
+                    "0.51867",
+                    "11"
+                ],
+                "data": [
+                    "0x25c5754dae7e7ca1"
+                ]
+            },
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "ICXTransfer(Address,Address,int)",
+                    "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                    "hx8edc6f20440430ad00c28d398a63e1e7578c1e90",
+                    "0x25c5754dae7e7ca1"
+                ],
+                "data": []
+            },
+            {
+                "scoreAddress": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "indexed": [
+                    "FundTransfer(Address,int,str)",
+                    "hx8edc6f20440430ad00c28d398a63e1e7578c1e90",
+                    "0x25c5754dae7e7ca1"
+                ],
+                "data": [
+                    "Player Winnings from hx8edc6f20440430ad00c28d398a63e1e7578c1e90."
+                ]
+            }
+        ],
+        "logsBloom": "0x00000000000200000000010100000000800000000000000000400000000000000002010000020000000000000000000040000220000080000000080042000000020000000000100000000000000000100000000000000000400000003000000000004100000002008000000000000000000000000000000010000000000400000000000000100000000000000000000000000000040000000000002000000400000004000000200000004000000008000800000000001000000000000000000000100000000200000100000020000000000020040000000000000402000000000000000000000000000002000010000000000000000000000000000100000000",
+        "status": "0x1"
+    },
+    "id": 1234
+}
