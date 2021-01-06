@@ -54,6 +54,8 @@ class IcxBlockMapper(object):
                 if isinstance(tx, dict)
             ]
 
+            block.transaction_count = len(json_dict["confirmed_transaction_list"])
+
         return block
 
     def block_to_dict(self, block):
@@ -65,7 +67,7 @@ class IcxBlockMapper(object):
             "merkle_root_hash": block.merkle_root_hash,
             "timestamp": block.timestamp,
             "version": block.version,
-            "transactions": block.transactions,
+            "transaction_count": block.transaction_count,
             "peer_id": block.peer_id,
             "signature": block.signature,
             "next_leader": block.next_leader,
