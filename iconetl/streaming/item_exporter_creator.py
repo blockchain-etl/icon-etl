@@ -37,7 +37,6 @@ def create_item_exporter(output):
                 "block": output + ".blocks",
                 "transaction": output + ".transactions",
                 "log": output + ".logs",
-                "receipt": output + ".traces",
             }
         )
     elif item_exporter_type == ItemExporterType.POSTGRES:
