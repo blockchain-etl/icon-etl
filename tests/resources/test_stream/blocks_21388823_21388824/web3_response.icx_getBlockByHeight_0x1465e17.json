@@ -1,0 +1,128 @@
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "version": "0.5",
+        "height": 21388823,
+        "signature": "SLCylCcqivcHXz2e5Et7gScCsDJGL54RHseIuLP3WcRIYZ+gKTm6XyNkxp/5ZLtnHV7KxRrBy5/vy0sYPXpmfwE=",
+        "prev_block_hash": "1d1b1883b212a3636707c34d87dd901c6394f6b4133a6bfea7a21780faeee006",
+        "merkle_tree_root_hash": "723927793fe0a6ff99f51509c4884859f9bf84c463b33c61dcbc06be5d01e66e",
+        "time_stamp": 1594748018742669,
+        "confirmed_transaction_list": [
+            {
+                "version": "0x3",
+                "timestamp": "0x5aa6a3529d58d",
+                "dataType": "base",
+                "data": {
+                    "prep": {
+                        "irep": "0x2f10c589aab688f0eb3",
+                        "rrep": "0x1c6",
+                        "totalDelegation": "0xf392803630ebb00e47be6d",
+                        "value": "0x2cdca3071fbde122"
+                    },
+                    "result": {
+                        "coveredByFee": "0xf02cc091ae000",
+                        "coveredByOverIssuedICX": "0x0",
+                        "issue": "0x2ccda03b16a30122"
+                    }
+                },
+                "txHash": "0x3680f3262fed98a4bc169c11b6ac66778da43c889d47a673d252362138715da9"
+            },
+            {
+                "version": "0x3",
+                "from": "hx7ace15bad7aff72b721d0b8109272d66b607dcca",
+                "to": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "timestamp": "0x5aa6a350a3530",
+                "nid": "0x1",
+                "stepLimit": "0x2625a00",
+                "dataType": "call",
+                "value": "0x8ac7230489e80000",
+                "data": {
+                    "method": "call_bet",
+                    "params": {
+                        "upper": "0x5f",
+                        "lower": "0x5",
+                        "user_seed": "duddy"
+                    }
+                },
+                "signature": "apQds8qlUF8yrCdpCttbAayK6lvmQilM4hyj0Jf4Yvpk85vKCojrWVTA/yVqH4IRrPUIlqMvmPZBUgIGUh1vTwE=",
+                "txHash": "0xaec1f999ec61c80e23701229a33ec3b471c073e721d0a4096f37f2e1ea6bfa19"
+            },
+            {
+                "from": "hx01a78bfb9f02c979dc0acb9cf198bb57ecc85a33",
+                "nid": "0x1",
+                "nonce": "0x27382173",
+                "signature": "168AooadSFHBbx+V/htGQT6ogmT243hWTqjqfdlTEvROQz9CvROB7uc6M7+gqYCqL2LhB+PgynY5CCHyBsWvmwA=",
+                "stepLimit": "0x186a0",
+                "timestamp": "0x5aa6a3506835d",
+                "to": "hx6d14b2b77a9e73c5d5804d43c7e3c3416648ae3d",
+                "value": "0x311cad808aeeba8c000",
+                "version": "0x3",
+                "txHash": "0x3ce26161a89e0747b87df969ce76af1c275237f0e95a7415cca8e578ed7372d7"
+            },
+            {
+                "version": "0x3",
+                "from": "hx7e2e60b5049f1191f4c26b97f1b78f46237e9ed7",
+                "to": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "stepLimit": "0x2faf080",
+                "timestamp": "0x5aa6a3515a994",
+                "nid": "0x1",
+                "value": "0xde0b6b3a7640000",
+                "nonce": "0x5",
+                "dataType": "call",
+                "data": {
+                    "method": "bet_on_numbers",
+                    "params": {
+                        "numbers": "1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20",
+                        "user_seed": ""
+                    }
+                },
+                "signature": "+Uq2/m+omP4vxgSEY8BRuji+nBx7YAkW/dhFUEk21ncDXHYjV2rDOht063ZWk3u4VjzdVgUi8tRukoDFkQqP3QA=",
+                "txHash": "0xcd159d87e580c51a770017a813dd451bed6cbe587ff6c84bc43a95efe9ea7c61"
+            },
+            {
+                "version": "0x3",
+                "from": "hx8edc6f20440430ad00c28d398a63e1e7578c1e90",
+                "to": "cx1b97c1abfd001d5cd0b5a3f93f22cccfea77e34e",
+                "stepLimit": "0x2faf080",
+                "timestamp": "0x5aa6a3516197e",
+                "nid": "0x1",
+                "value": "0x22b1c8c1227a0000",
+                "nonce": "0x5",
+                "dataType": "call",
+                "data": {
+                    "method": "bet_on_numbers",
+                    "params": {
+                        "numbers": "1,2,3,4,5,6,7,8,10,11,12,13,14,15,16,17,18,19,20",
+                        "user_seed": ""
+                    }
+                },
+                "signature": "+GGJ1UnKPP4XMLHmCdZ/HSW8GJ6x8fHvie3m2b1tHBkFSeKFMXBIvuu/fgJc6HN9jYM77jEwzH0maD6UIhxgSQE=",
+                "txHash": "0xe87509d050cd172b1ca8129b3ba2028c5ff84b53684f56401d01d09934777039"
+            },
+            {
+                "version": "0x3",
+                "from": "hx9a536f0a97cb3f04a32153b24927067eabc9d2b7",
+                "to": "cxb0b6f777fba13d62961ad8ce11be7ef6c4b2bcc6",
+                "timestamp": "0x5aa6a350e4c10",
+                "nid": "0x1",
+                "stepLimit": "0x2625a00",
+                "dataType": "call",
+                "value": "0x1158e460913d00000",
+                "data": {
+                    "method": "call_bet",
+                    "params": {
+                        "upper": "0x63",
+                        "lower": "0x5",
+                        "user_seed": "actasif"
+                    }
+                },
+                "signature": "AUuboNR5KuMlyU0RBoSBKinzEPwinydvYq4xLjgsmVZyRN+LrrmLSL7uo5TGDeQZoYpMWu0AIgRIUETV+5203gA=",
+                "txHash": "0x341884ab68c291df94ca9ce8e4948b06ed80652519f0a228b30ec7bda64d001c"
+            }
+        ],
+        "block_hash": "d00cc3f606000539ca7ef74f3163d6f85f748fb93321669a639264648660962e",
+        "peer_id": "hx231a795d1c719b9edf35c46b9daa4e0b5a1e83aa",
+        "next_leader": "hx231a795d1c719b9edf35c46b9daa4e0b5a1e83aa"
+    },
+    "id": 1234
+}

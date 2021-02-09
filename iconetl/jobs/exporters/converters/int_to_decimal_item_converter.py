@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2020 Richard Mah (richard@richardmah.com) & Insight Infrastructure
+#  Copyright (c) 2021 Richard Mah (richard@richardmah.com) & Insight Infrastructure
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
 #  this software and associated documentation files (the "Software"), to deal in
@@ -19,28 +19,14 @@
 #  IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
+from decimal import Decimal
 
-import json
-
-from tests.iconetl.job.mock_web3_provider import MockWeb3Provider, build_file_name
+from iconetl.jobs.exporters.converters.simple_item_converter import SimpleItemConverter
 
 
-class MockBatchWeb3Provider(MockWeb3Provider):
-    def __init__(self, read_resource):
-        super().__init__(read_resource)
-        self.read_resource = read_resource
-
-    def make_batch_request(self, text):
-        batch = json.loads(text)
-        web3_response = []
-        if type(batch) is dict:
-            if batch["method"] == "icx_getLastBlock":
-                return {"jsonrpc": "2.0", "id": 1234, "result": {"height": 9999999999}}
-
-        for req in batch:
-            method = req["method"]
-            params = req["params"]
-            file_name = build_file_name(method, params)
-            file_content = self.read_resource(file_name)
-            web3_response.append(json.loads(file_content))
-        return web3_response
+class IntToDecimalItemConverter(SimpleItemConverter):
+    def convert_field(self, key, value):
+        if isinstance(value, int):
+            return Decimal(value)
+        else:
+            return value

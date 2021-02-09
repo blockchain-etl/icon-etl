@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2020 Richard Mah (richard@richardmah.com) & Insight Infrastructure
+#  Copyright (c) 2021 Richard Mah (richard@richardmah.com) & Insight Infrastructure
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
 #  this software and associated documentation files (the "Software"), to deal in
@@ -20,27 +20,25 @@
 #  CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
-import json
+class ListFieldItemConverter:
+    def __init__(self, field, new_field_prefix, fill=0, fill_with=None):
+        self.field = field
+        self.new_field_prefix = new_field_prefix
+        self.fill = fill
+        self.fill_with = fill_with
 
-from tests.iconetl.job.mock_web3_provider import MockWeb3Provider, build_file_name
+    def convert_item(self, item):
+        if not item:
+            return item
 
-
-class MockBatchWeb3Provider(MockWeb3Provider):
-    def __init__(self, read_resource):
-        super().__init__(read_resource)
-        self.read_resource = read_resource
-
-    def make_batch_request(self, text):
-        batch = json.loads(text)
-        web3_response = []
-        if type(batch) is dict:
-            if batch["method"] == "icx_getLastBlock":
-                return {"jsonrpc": "2.0", "id": 1234, "result": {"height": 9999999999}}
-
-        for req in batch:
-            method = req["method"]
-            params = req["params"]
-            file_name = build_file_name(method, params)
-            file_content = self.read_resource(file_name)
-            web3_response.append(json.loads(file_content))
-        return web3_response
+        lst = item.get(self.field)
+        result = item
+        if lst is not None and isinstance(lst, list):
+            result = item.copy()
+            del result[self.field]
+            for lst_item_index, lst_item in enumerate(lst):
+                result[self.new_field_prefix + str(lst_item_index)] = lst_item
+            if len(lst) < self.fill:
+                for i in range(len(lst), self.fill):
+                    result[self.new_field_prefix + str(i)] = self.fill_with
+        return result
