@@ -29,6 +29,8 @@ from blockchainetl_common.streaming.streaming_utils import (
     configure_signals,
 )
 from blockchainetl_common.thread_local_proxy import ThreadLocalProxy
+from iconsdk.icon_service import IconService
+from iconsdk.providers.http_provider import HTTPProvider
 
 from iconetl.enumeration.entity_type import EntityType
 from iconetl.providers.auto import get_provider_from_uri
@@ -63,11 +65,19 @@ from iconetl.providers.auto import get_provider_from_uri
     "--output",
     type=str,
     help="Either Google PubSub topic path e.g. projects/your-project/topics/crypto_icon; "
-    "or Postgres connection url e.g. postgresql+pg8000://postgres:admin@127.0.0.1:5432/icon. "
+    "a Postgres connection url e.g. postgresql+pg8000://postgres:admin@127.0.0.1:5432/icon. "
+    "or a Kafka node url e.g. kafka.node.example[:1234]"
     "If not specified will print to console",
 )
 @click.option(
     "-s", "--start-block", default=None, show_default=True, type=int, help="Start block"
+)
+@click.option(
+    "--start-at-head",
+    default=False,
+    show_default=True,
+    type=bool,
+    help="Start syncing at chain head",
 )
 @click.option(
     "-e",
@@ -110,13 +120,59 @@ from iconetl.providers.auto import get_provider_from_uri
 )
 @click.option("--log-file", default=None, show_default=True, type=str, help="Log file")
 @click.option("--pid-file", default=None, show_default=True, type=str, help="pid file")
+@click.option(
+    "--kafka-blocks-topic",
+    default="blocks",
+    show_default=True,
+    type=str,
+    envvar="ICONETL_KAFKA_TOPIC_BLOCKS",
+    help="Name of Kafka topic for block data",
+)
+@click.option(
+    "--kafka-transactions-topic",
+    default="transactions",
+    show_default=True,
+    type=str,
+    envvar="ICONETL_KAFKA_TOPIC_TRANSACTIONS",
+    help="Name of Kafka topic for transaction data",
+)
+@click.option(
+    "--kafka-logs-topic",
+    default="logs",
+    show_default=True,
+    type=str,
+    envvar="ICONETL_KAFKA_TOPIC_LOGS",
+    help="Name of Kafka topic for log data",
+)
+@click.option(
+    "--kafka-compression-type",
+    default="gzip",
+    show_default=True,
+    type=str,
+    envvar="ICONETL_KAFKA_COMPRESSION_TYPE",
+    help="Type/level of compression for Kafka: either 'gzip', 'snappy', or None",
+)
+@click.option(
+    "--kafka-schema-registry-url",
+    default=None,
+    show_default=True,
+    type=str,
+    envvar="ICONETL_KAFKA_SCHEMA_REGISTRY_URL",
+    help="URL for Kafka schema registry. Must use 'http://'. If not specified, schema registry will not be used.",
+)
 def stream(
     last_synced_block_file,
     lag,
     provider_uri,
     output,
     start_block,
+    start_at_head,
     entity_types,
+    kafka_blocks_topic,
+    kafka_transactions_topic,
+    kafka_logs_topic,
+    kafka_compression_type,
+    kafka_schema_registry_url,
     period_seconds=10,
     batch_size=2,
     block_batch_size=10,
@@ -129,6 +185,7 @@ def stream(
     configure_signals()
     entity_types = parse_entity_types(entity_types)
     validate_entity_types(entity_types, output)
+    start_block = determine_start_block(start_block, start_at_head, provider_uri)
 
     from blockchainetl_common.streaming.streamer import Streamer
 
@@ -138,11 +195,21 @@ def stream(
     provider_uri = pick_random_provider_uri(provider_uri)
     logging.info("Using " + provider_uri)
 
+    kafka_settings = {
+        "topic_map": {
+            "block": kafka_blocks_topic,
+            "transaction": kafka_transactions_topic,
+            "log": kafka_logs_topic,
+        },
+        "compression_type": kafka_compression_type,
+        "schema_registry_url": kafka_schema_registry_url,
+    }
+
     streamer_adapter = IcxStreamerAdapter(
         batch_web3_provider=ThreadLocalProxy(
             lambda: get_provider_from_uri(provider_uri, batch=True)
         ),
-        item_exporter=create_item_exporter(output),
+        item_exporter=create_item_exporter(output, kafka_settings),
         batch_size=batch_size,
         max_workers=max_workers,
         entity_types=entity_types,
@@ -193,3 +260,20 @@ def validate_entity_types(entity_types, output):
 def pick_random_provider_uri(provider_uri):
     provider_uris = [uri.strip() for uri in provider_uri.split(",")]
     return random.choice(provider_uris)
+
+
+def determine_start_block(start_block, start_at_head, provider_uri):
+    if start_block and start_at_head:
+        raise ValueError(
+            "A start block value, {}, should not be specified if the --start-at-head option is enabled.".format(
+                start_block
+            )
+        )
+
+    if not start_at_head:
+        return start_block
+
+    if start_at_head:
+        svc = IconService(HTTPProvider(provider_uri))
+        head = svc.get_block("latest")["height"]
+        return head

@@ -32,6 +32,8 @@ setup(
         "streaming": [
             "timeout-decorator==0.4.1",
             "sqlalchemy==1.3.13",
+            "confluent-kafka ~= 1.5.0",
+            "fastavro ~= 1.2.0",
         ],
         "dev": ["pytest~=4.3.0"],
     },

@@ -1,11 +1,19 @@
-FROM python:3.6 as base
-MAINTAINER Richard Mah <richard@richardmah.com>
+FROM python:3.6 as compile
+MAINTAINER Richard Mah <richard@geometrylabs.io>
 ENV PROJECT_DIR=icon-etl
 
 RUN mkdir /$PROJECT_DIR
 WORKDIR /$PROJECT_DIR
 COPY . .
-RUN pip install --upgrade pip && pip install -e /$PROJECT_DIR/[streaming]
+RUN pip install --upgrade pip && pip install --user -e /$PROJECT_DIR/[streaming]
+
+FROM python:3.6-slim AS base
+ENV PROJECT_DIR=icon-etl
+COPY --from=compile /root/.local /root/.local
+RUN mkdir /$PROJECT_DIR
+WORKDIR /$PROJECT_DIR
+COPY . .
+ENV PATH=/root/.local/bin:$PATH
 
 # Add Tini
 ENV TINI_VERSION v0.19.0
