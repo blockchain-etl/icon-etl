@@ -20,8 +20,10 @@ ENV TINI_VERSION v0.19.0
 ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
 RUN chmod +x /tini
 
-FROM base as prod
 ENTRYPOINT ["/tini", "--", "python", "iconetl"]
+
+FROM base as prod
+
 
 FROM base as test
 COPY requirements_dev.txt .
