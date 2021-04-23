@@ -112,19 +112,29 @@ def create_item_exporter(output, kafka_settings):
                     registry_client,
                     conf={"auto.register.schemas": False},
                 ),
-                "transaction": JSONSerializer(
-                    get_schema(
-                        kafka_settings["topic_map"]["transaction"], "transaction"
-                    ),
-                    registry_client,
-                    conf={"auto.register.schemas": False},
-                ),
                 "log": JSONSerializer(
                     get_schema(kafka_settings["topic_map"]["log"], "log"),
                     registry_client,
                     conf={"auto.register.schemas": False},
                 ),
             }
+
+            if kafka_settings["values_as_hex"]:
+                serializers["transaction"] = JSONSerializer(
+                    get_schema(
+                        kafka_settings["topic_map"]["transaction_hex"], "transaction"
+                    ),
+                    registry_client,
+                    conf={"auto.register.schemas": False},
+                )
+            else:
+                serializers["transaction"] = JSONSerializer(
+                    get_schema(
+                        kafka_settings["topic_map"]["transaction_int"], "transaction"
+                    ),
+                    registry_client,
+                    conf={"auto.register.schemas": False},
+                )
 
             for topic_type, topic_name in kafka_settings["topic_map"].items():
                 if not schema_exist(registry_client, topic_name, topic_type):
@@ -141,7 +151,10 @@ def create_item_exporter(output, kafka_settings):
         )
 
         item_exporter = KafkaItemExporter(
-            producer, kafka_settings["topic_map"], serializers
+            producer,
+            kafka_settings["topic_map"],
+            serializers,
+            kafka_settings["values_as_hex"],
         )
 
     elif item_exporter_type == ItemExporterType.CONSOLE:

@@ -35,6 +35,8 @@ from json import dumps
 
 from confluent_kafka.serialization import MessageField, SerializationContext
 
+from iconetl.utils import dec_to_hex
+
 
 class KafkaItemExporter:
     def __init__(
@@ -42,10 +44,12 @@ class KafkaItemExporter:
         producer,
         item_type_to_topic_mapping,
         serializers,
+        values_as_hex,
     ):
         self.producer = producer
         self.item_type_to_topic_mapping = item_type_to_topic_mapping
         self.serializers = serializers
+        self.values_as_hex = values_as_hex
 
     def open(self):
         pass
@@ -87,6 +91,20 @@ class KafkaItemExporter:
                             )
                         else:
                             headers.append(("from", bytes("None", "utf-8")))
+
+                    if item["type"] == "transaction" and self.values_as_hex:
+                        item["value"] = dec_to_hex(item["value"])
+                        item["step_limit"] = dec_to_hex(item["step_limit"])
+                        item["fee"] = dec_to_hex(item["fee"])
+                        item["receipt_cumulative_step_used"] = dec_to_hex(
+                            item["receipt_cumulative_step_used"]
+                        )
+                        item["receipt_step_used"] = dec_to_hex(
+                            item["receipt_step_used"]
+                        )
+                        item["receipt_step_price"] = dec_to_hex(
+                            item["receipt_step_price"]
+                        )
 
                     if self.serializers:
                         self.producer.produce(

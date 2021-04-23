@@ -36,6 +36,18 @@ def hex_to_dec(hex_string):
         return hex_string
 
 
+def dec_to_hex(dec_int):
+    if dec_int is None:
+        return None
+    if isinstance(dec_int, str):
+        return dec_int
+    try:
+        return hex(dec_int)
+    except TypeError:
+        print("Not a number %s" % dec_int)
+        return dec_int
+
+
 def to_normalized_address(address):
     if address is None or not isinstance(address, str):
         return address
