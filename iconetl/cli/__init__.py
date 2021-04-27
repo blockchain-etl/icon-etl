@@ -28,11 +28,12 @@ from iconetl.cli.export_receipts_and_logs import export_receipts_and_logs
 from iconetl.cli.extract_csv_column import extract_csv_column
 from iconetl.cli.get_block_range_for_date import get_block_range_for_date
 from iconetl.cli.get_block_range_for_timestamps import get_block_range_for_timestamps
+from iconetl.cli.mock_stream import mock_stream
 from iconetl.cli.stream import stream
 
 
 @click.group()
-@click.version_option(version="0.1.4-alpha.2")
+@click.version_option(version="0.1.4-alpha.3")
 @click.pass_context
 def cli(ctx):
     pass
@@ -43,6 +44,7 @@ cli.add_command(export_receipts_and_logs, "export_receipts_and_logs")
 cli.add_command(export_blocks_and_transactions, "export_blocks_and_transactions")
 
 cli.add_command(stream, "stream")
+cli.add_command(mock_stream, "mock_stream")
 
 cli.add_command(get_block_range_for_date, "get_block_range_for_date")
 cli.add_command(get_block_range_for_timestamps, "get_block_range_for_timestamps")

@@ -7,5 +7,6 @@ nav:
     - Commands: commands.md
     - Schema: schema.md
     - Limitations: limitations.md
+  - Testing Mocks: testing-mocks.md
 theme: readthedocs
 repo_url: https://github.com/insight-icon/icon-etl
