@@ -128,6 +128,10 @@ def mock_stream(
     max_workers=5,
     log_file=None,
 ):
+    # Clear existing last_synced_block.txt
+    if os.path.exists("last_synced_block.txt"):
+        os.remove("last_synced_block.txt")
+
     """Streams all data types to console or Google Pub/Sub."""
     configure_logging(log_file)
     configure_signals()
