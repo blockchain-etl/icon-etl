@@ -12,7 +12,7 @@ FROM python:3.6-slim AS base
 RUN useradd -ms /bin/bash iconetl
 ENV PROJECT_DIR=icon-etl
 COPY --from=compile --chown=iconetl:iconetl /root/.local /home/iconetl/.local
-RUN mkdir /$PROJECT_DIR
+RUN mkdir /$PROJECT_DIR && chown -R iconetl:iconetl /$PROJECT_DIR
 WORKDIR /$PROJECT_DIR
 COPY --chown=iconetl:iconetl . .
 ENV PATH=/home/iconetl/.local/bin:$PATH
@@ -29,6 +29,7 @@ FROM base as prod
 
 
 FROM base as test
+USER iconetl
 COPY requirements_dev.txt .
 RUN pip3 install -r requirements_dev.txt
 RUN python3 -m pytest
