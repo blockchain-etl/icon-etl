@@ -15,7 +15,7 @@ RUN useradd -ms /bin/bash iconetl && mkdir /$PROJECT_DIR && chown -R iconetl:ico
 COPY --from=compile --chown=iconetl:iconetl /home/iconetl/.local /home/iconetl/.local
 WORKDIR /$PROJECT_DIR
 COPY --chown=iconetl:iconetl . .
-ENV PATH=/home/iconetl/.local/bin:$PATH
+ENV PATH=/home/iconetl/.local/bin:/$PROJECT_DIR:$PATH
 
 # Add Tini
 ENV TINI_VERSION v0.19.0
