@@ -2,17 +2,17 @@ FROM python:3.6 as compile
 MAINTAINER Richard Mah <richard@geometrylabs.io>
 ENV PROJECT_DIR=icon-etl
 
-RUN mkdir /$PROJECT_DIR
+RUN useradd -ms /bin/bash iconetl && mkdir /$PROJECT_DIR && chown -R iconetl:iconetl /$PROJECT_DIR
 WORKDIR /$PROJECT_DIR
-COPY . .
+USER iconetl
+COPY --chown=iconetl:iconetl . .
 RUN pip install --upgrade pip && pip install --user -e /$PROJECT_DIR/[streaming]
 
 FROM python:3.6-slim AS base
 
-RUN useradd -ms /bin/bash iconetl
 ENV PROJECT_DIR=icon-etl
-COPY --from=compile --chown=iconetl:iconetl /root/.local /home/iconetl/.local
-RUN mkdir /$PROJECT_DIR && chown -R iconetl:iconetl /$PROJECT_DIR
+RUN useradd -ms /bin/bash iconetl && mkdir /$PROJECT_DIR && chown -R iconetl:iconetl /$PROJECT_DIR
+COPY --from=compile --chown=iconetl:iconetl /home/iconetl/.local /home/iconetl/.local
 WORKDIR /$PROJECT_DIR
 COPY --chown=iconetl:iconetl . .
 ENV PATH=/home/iconetl/.local/bin:$PATH
