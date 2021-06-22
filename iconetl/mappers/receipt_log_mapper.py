@@ -34,6 +34,7 @@ class IcxReceiptLogMapper(object):
         receipt_log.block_hash = blk_hash
         receipt_log.block_number = blk_num
         receipt_log.address = json_dict.get("scoreAddress")
+        receipt_log.from_address = json_dict.get("from")
         unsanitized_data = json_dict.get("data")
         sanitized_data = []
         for item in unsanitized_data:
@@ -55,6 +56,7 @@ class IcxReceiptLogMapper(object):
             "block_hash": receipt_log.block_hash,
             "block_number": receipt_log.block_number,
             "address": receipt_log.address,
+            "from_address": receipt_log.from_address,
             "data": receipt_log.data,
             "indexed": receipt_log.indexed,
         }
@@ -68,6 +70,7 @@ class IcxReceiptLogMapper(object):
         receipt_log.block_hash = dict.get("block_hash")
         receipt_log.block_number = dict.get("block_number")
         receipt_log.address = dict.get("address")
+        receipt_log.from_address = dict.get("from")
         receipt_log.data = dict.get("data")
         receipt_log.indexed = dict.get("indexed")
 

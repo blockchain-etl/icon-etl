@@ -89,7 +89,9 @@ class IcxStreamerAdapter:
             else []
         )
         enriched_logs = (
-            enrich_logs(blocks, logs) if EntityType.LOG in self.entity_types else []
+            enrich_logs(blocks, logs, transactions)
+            if EntityType.LOG in self.entity_types
+            else []
         )
 
         logging.info("Exporting with " + type(self.item_exporter).__name__)

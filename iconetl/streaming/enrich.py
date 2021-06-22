@@ -101,12 +101,30 @@ def enrich_transactions(transactions, receipts):
     return result
 
 
-def enrich_logs(blocks, logs):
+def enrich_logs(blocks, logs, transactions):
     result = list(
         join(
-            logs,
-            blocks,
-            ("block_number", "number"),
+            join(
+                logs,
+                blocks,
+                ("block_number", "number"),
+                [
+                    "type",
+                    "log_index",
+                    "transaction_hash",
+                    "transaction_index",
+                    "address",
+                    "data",
+                    "indexed",
+                    "block_number",
+                ],
+                [
+                    ("timestamp", "block_timestamp"),
+                    ("hash", "block_hash"),
+                ],
+            ),
+            transactions,
+            ("transaction_hash", "hash"),
             [
                 "type",
                 "log_index",
@@ -116,11 +134,10 @@ def enrich_logs(blocks, logs):
                 "data",
                 "indexed",
                 "block_number",
+                "block_timestamp",
+                "block_hash",
             ],
-            [
-                ("timestamp", "block_timestamp"),
-                ("hash", "block_hash"),
-            ],
+            ["from_address"],
         )
     )
 

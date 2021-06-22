@@ -28,5 +28,6 @@ class IcxReceiptLog(object):
         self.block_hash = None
         self.block_number = None
         self.address = None
+        self.from_address = None
         self.data = None
         self.indexed = None
