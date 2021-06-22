@@ -21,14 +21,19 @@
 
 
 import pytest
-import tests.resources
 from blockchainetl_common.thread_local_proxy import ThreadLocalProxy
+
+import tests.resources
 from iconetl.jobs.export_receipts_job import ExportReceiptsJob
-from iconetl.jobs.exporters.receipts_and_logs_item_exporter import \
-    receipts_and_logs_item_exporter
+from iconetl.jobs.exporters.receipts_and_logs_item_exporter import (
+    receipts_and_logs_item_exporter,
+)
 from tests.iconetl.job.utils import get_web3_provider
-from tests.utils import (compare_lines_ignore_order, read_file,
-                         skip_if_slow_tests_disabled)
+from tests.utils import (
+    compare_lines_ignore_order,
+    read_file,
+    skip_if_slow_tests_disabled,
+)
 
 RESOURCE_GROUP = "test_export_receipts_job"
 
@@ -51,6 +56,10 @@ HTML_TX_HASHES = [
     "0x1a94bf51895fc4112ccd17f17a382fbe2cc5c0f787595256c98e0669b572c52e",
 ]
 
+NONETYPE_TX_HASHES = [
+    "0xdd2ce505fd1ce157988a9195894c11739d9f1612609f0b91d368010fece78da7"
+]
+
 
 @pytest.mark.parametrize(
     "batch_size,transaction_hashes,output_format,resource_group,web3_provider_type",
@@ -68,6 +77,11 @@ HTML_TX_HASHES = [
         (2, HTML_TX_HASHES, "json", "html_sanitize", "mock"),
         skip_if_slow_tests_disabled(
             (2, HTML_TX_HASHES, "csv", "html_sanitize", "mock")
+        ),
+        (2, NONETYPE_TX_HASHES, "csv", "nonetype_data", "mock"),
+        (2, NONETYPE_TX_HASHES, "json", "nonetype_data", "mock"),
+        skip_if_slow_tests_disabled(
+            (2, NONETYPE_TX_HASHES, "csv", "nonetype_data", "mock")
         ),
     ],
 )

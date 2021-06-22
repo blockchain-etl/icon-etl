@@ -33,7 +33,9 @@ def sort_json(json_string):
 def compare_lines_ignore_order(expected, actual):
     expected_lines = expected.splitlines()
     actual_lines = actual.splitlines()
-    assert len(expected_lines) == len(actual_lines)
+    assert len(expected_lines) == len(actual_lines), "{0} != {1}".format(
+        expected_lines, actual_lines
+    )
 
     try:
         expected_lines = [sort_json(line) for line in expected_lines]
@@ -42,7 +44,9 @@ def compare_lines_ignore_order(expected, actual):
         pass
 
     for expected_line, actual_line in zip(sorted(expected_lines), sorted(actual_lines)):
-        assert expected_line == actual_line
+        assert expected_line == actual_line, "{0}\n                {1}".format(
+            expected_line, actual_line
+        )
 
 
 def read_file(path):
