@@ -6,6 +6,8 @@ name: Push to Master CI
 on:
   push:
     branches: master
+    paths-ignore:
+      - 'charts/**'
 
 jobs:
   docker:

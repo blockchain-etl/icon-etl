@@ -1,0 +1,37 @@
+deployment:
+  replicas: 1
+  resources:
+    requests:
+      cpu:
+      memory:
+    limits:
+      cpu:
+      memory:
+  storage:
+    size:
+
+image:
+  repository: geometrylabs/iconetl
+  tag: latest
+  imagePullPolicy: IfNotPresent
+
+etl:
+  mode: stream
+  output:
+  lag:
+  providerURI:
+  startBlock:
+  startAtHead: true
+  entityTypes:
+  periodSeconds: 1
+  batchSize: 100
+  blockBatchSize: 100
+  maxWorkers:
+  kafka:
+    topics:
+      blocks:
+      transactions:
+      logs:
+    compressionType:
+    schemaRegistryURL:
+    valuesAsHex: true
