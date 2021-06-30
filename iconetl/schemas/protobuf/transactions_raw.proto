@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+message transactions_raw {
+  string type = 1;
+  string version = 2;
+  string from_address = 3;
+  string to_address = 4;
+  int64 value = 5;
+  int64 step_limit = 6;
+  string timestamp = 7;
+  int64 block_timestamp = 8;
+  int64 nid = 9;
+  int64 nonce = 10;
+  string hash = 11;
+  int64 transaction_index = 12;
+  string block_hash = 13;
+  int64 block_number = 14;
+  int64 fee = 15;
+  string signature = 16;
+  string data_type = 17;
+  string data = 18;
+  int64 receipt_cumulative_step_used = 19;
+  int64 receipt_step_used = 20;
+  int64 receipt_step_price = 21;
+  string receipt_score_address = 22;
+  string receipt_logs = 23;
+  int64 receipt_status = 24;
+  string item_id = 25;
+  string item_timestamp = 26;
+}
