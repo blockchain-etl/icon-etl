@@ -161,6 +161,14 @@ from iconetl.providers.auto import get_provider_from_uri
     help="URL for Kafka schema registry. Must use 'http://'. If not specified, schema registry will not be used.",
 )
 @click.option(
+    "--kafka-use-schema-registry",
+    default=False,
+    show_default=True,
+    type=bool,
+    envvar="ICONETL_KAFKA_USE_SCHEMA_REGISTRY",
+    help="Enable/disable use of schema registry",
+)
+@click.option(
     "--values-as-hex",
     default=False,
     show_default=True,
@@ -181,6 +189,7 @@ def stream(
     kafka_logs_topic,
     kafka_compression_type,
     kafka_schema_registry_url,
+    kafka_use_schema_registry,
     values_as_hex,
     period_seconds=10,
     batch_size=2,
@@ -211,6 +220,7 @@ def stream(
             "log": kafka_logs_topic,
         },
         "compression_type": kafka_compression_type,
+        "enable_schema_registry": kafka_use_schema_registry,
         "schema_registry_url": kafka_schema_registry_url,
         "values_as_hex": values_as_hex,
     }
