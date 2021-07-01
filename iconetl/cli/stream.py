@@ -168,14 +168,6 @@ from iconetl.providers.auto import get_provider_from_uri
     envvar="ICONETL_KAFKA_USE_SCHEMA_REGISTRY",
     help="Enable/disable use of schema registry",
 )
-@click.option(
-    "--values-as-hex",
-    default=False,
-    show_default=True,
-    type=bool,
-    envvar="ICONETL_VALUES_AS_HEX",
-    help="Export ICX (loop) values as hex rather than int.",
-)
 def stream(
     last_synced_block_file,
     lag,
@@ -190,7 +182,6 @@ def stream(
     kafka_compression_type,
     kafka_schema_registry_url,
     kafka_use_schema_registry,
-    values_as_hex,
     period_seconds=10,
     batch_size=2,
     block_batch_size=10,
@@ -222,7 +213,6 @@ def stream(
         "compression_type": kafka_compression_type,
         "enable_schema_registry": kafka_use_schema_registry,
         "schema_registry_url": kafka_schema_registry_url,
-        "values_as_hex": values_as_hex,
     }
 
     streamer_adapter = IcxStreamerAdapter(
