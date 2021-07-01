@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2021 Richard Mah (richard@richardmah.com) & Insight Infrastructure
+#  Copyright (c) 2021 Richard Mah (richard@geometrylabs.io) & Geometry Labs (geometrylabs.io)
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
 #  this software and associated documentation files (the "Software"), to deal in
