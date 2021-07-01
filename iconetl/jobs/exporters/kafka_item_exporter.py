@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2021 Richard Mah (richard@richardmah.com) & Insight Infrastructure
+#  Copyright (c) 2021 Richard Mah (richard@geometrylabs.io) & Geometry Labs (geometrylabs.io)
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
 #  this software and associated documentation files (the "Software"), to deal in
@@ -36,16 +36,17 @@ from json import dumps
 from confluent_kafka.serialization import MessageField, SerializationContext
 from google.protobuf.json_format import MessageToJson
 
-from iconetl.schemas.protobuf_compiled import (
-    blocks_raw_pb2 as blocks_raw,
-    transactions_raw_pb2 as transactions_raw,
-    logs_raw_pb2 as logs_raw,
-)
+from iconetl.schemas.protobuf_compiled import blocks_raw_pb2 as blocks_raw
+from iconetl.schemas.protobuf_compiled import logs_raw_pb2 as logs_raw
+from iconetl.schemas.protobuf_compiled import transactions_raw_pb2 as transactions_raw
 
 
 class KafkaItemExporter:
     def __init__(
-        self, producer, item_type_to_topic_mapping, serializers,
+        self,
+        producer,
+        item_type_to_topic_mapping,
+        serializers,
     ):
         self.producer = producer
         self.item_type_to_topic_mapping = item_type_to_topic_mapping
@@ -162,7 +163,10 @@ class KafkaItemExporter:
                         )
                     else:
                         self.producer.produce(
-                            topic, value=MessageToJson(value_object), key=key, headers=headers,
+                            topic,
+                            value=MessageToJson(value_object),
+                            key=key,
+                            headers=headers,
                         )
 
                 self.producer.flush()

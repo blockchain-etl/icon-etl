@@ -1,6 +1,6 @@
 #  MIT License
 #
-#  Copyright (c) 2021 Richard Mah (richard@richardmah.com) & Insight Infrastructure
+#  Copyright (c) 2021 Richard Mah (richard@geometrylabs.io) & Geometry Labs (geometrylabs.io)
 #
 #  Permission is hereby granted, free of charge, to any person obtaining a copy of
 #  this software and associated documentation files (the "Software"), to deal in
@@ -81,10 +81,10 @@ def create_item_exporter(output, kafka_settings):
         from confluent_kafka.schema_registry.protobuf import ProtobufSerializer
 
         from iconetl.jobs.exporters.kafka_item_exporter import KafkaItemExporter
+        from iconetl.schemas.protobuf_compiled import blocks_raw_pb2 as blocks_raw
+        from iconetl.schemas.protobuf_compiled import logs_raw_pb2 as logs_raw
         from iconetl.schemas.protobuf_compiled import (
-            blocks_raw_pb2 as blocks_raw,
             transactions_raw_pb2 as transactions_raw,
-            logs_raw_pb2 as logs_raw,
         )
 
         if kafka_settings["enable_schema_registry"]:
@@ -121,7 +121,9 @@ def create_item_exporter(output, kafka_settings):
         )
 
         item_exporter = KafkaItemExporter(
-            producer, kafka_settings["topic_map"], serializers,
+            producer,
+            kafka_settings["topic_map"],
+            serializers,
         )
 
     elif item_exporter_type == ItemExporterType.CONSOLE:

@@ -1,10 +1,10 @@
 repos:
 -   repo: https://github.com/timothycrosley/isort
-    rev: 5.7.0
+    rev: 5.9.1
     hooks:
     -   id: isort
 -   repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v3.4.0
+    rev: v4.0.1
     hooks:
     -   id: trailing-whitespace
     -   id: end-of-file-fixer
@@ -12,7 +12,7 @@ repos:
         exclude: ^charts/\S*/templates/
         args: [--allow-multiple-documents]
 -   repo: https://github.com/ambv/black
-    rev: 20.8b1
+    rev: 21.6b0
     hooks:
     - id: black
       args: [--safe]
