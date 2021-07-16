@@ -2,8 +2,8 @@ FROM python:3.6 as compile
 MAINTAINER Richard Mah <richard@geometrylabs.io>
 ENV PROJECT_DIR=icon-etl
 
-WORKDIR /$PROJECT_DIR
 RUN useradd -ms /bin/bash iconetl && mkdir /$PROJECT_DIR && chown -R iconetl:iconetl /$PROJECT_DIR
+WORKDIR /$PROJECT_DIR
 COPY --chown=iconetl:iconetl . .
 RUN cd /usr/local/lib/python3.6/site-packages && python /$PROJECT_DIR/setup.py develop && pip install -e /$PROJECT_DIR/[streaming]
 
