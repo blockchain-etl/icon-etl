@@ -122,6 +122,7 @@ class KafkaItemExporter:
                             key=key,
                             headers=headers,
                         )
+                        self.producer.poll(0)
 
                 self.producer.flush()
 
