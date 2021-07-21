@@ -124,8 +124,8 @@ class KafkaItemExporter:
                         value_object = transactions_raw.transactions_raw(
                             type=item["type"],
                             version=item["version"],
-                            from_address=item["from"],
-                            to_address=item["to"],
+                            from_address=item["from_address"],
+                            to_address=item["to_address"],
                             value=item["value"],
                             step_limit=item["step_limit"],
                             timestamp=item["timestamp"],
