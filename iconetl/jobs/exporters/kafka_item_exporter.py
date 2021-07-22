@@ -127,7 +127,7 @@ class KafkaItemExporter:
                             version=str(item["version"]),
                             from_address=str(item["from_address"]),
                             to_address=str(item["to_address"]),
-                            value=dec_to_hex(["value"]),
+                            value=dec_to_hex(item["value"]),
                             step_limit=item["step_limit"],
                             timestamp=str(item["timestamp"]),
                             block_timestamp=item["block_timestamp"],
