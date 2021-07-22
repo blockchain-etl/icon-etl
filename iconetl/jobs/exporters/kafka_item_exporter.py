@@ -71,19 +71,19 @@ class KafkaItemExporter:
                         headers.append(("hash", bytes(item["hash"], "utf-8")))
                         # Create blocks_raw object
                         value_object = blocks_raw.blocks_raw(
-                            type=item["type"],
+                            type=str(item["type"]),
                             number=item["number"],
-                            hash=item["hash"],
-                            parent_hash=item["parent_hash"],
-                            merkle_root_hash=item["merkle_root_hash"],
+                            hash=str(item["hash"]),
+                            parent_hash=str(item["parent_hash"]),
+                            merkle_root_hash=str(item["merkle_root_hash"]),
                             timestamp=item["timestamp"],
-                            version=item["version"],
+                            version=str(item["version"]),
                             transaction_count=item["transaction_count"],
-                            peer_id=item["peer_id"],
-                            signature=item["signature"],
-                            next_leader=item["next_leader"],
-                            item_id=item["item_id"],
-                            item_timestamp=item["item_timestamp"],
+                            peer_id=str(item["peer_id"]),
+                            signature=str(item["signature"]),
+                            next_leader=str(item["next_leader"]),
+                            item_id=str(item["item_id"]),
+                            item_timestamp=str(item["item_timestamp"]),
                         )
                     elif item["type"] == "log":
                         # Configure header & key
@@ -93,18 +93,18 @@ class KafkaItemExporter:
                         )
                         # Create logs_raw object
                         value_object = logs_raw.logs_raw(
-                            type=item["type"],
+                            type=str(item["type"]),
                             log_index=item["log_index"],
-                            transaction_hash=item["transaction_hash"],
+                            transaction_hash=str(item["transaction_hash"]),
                             transaction_index=item["transaction_index"],
-                            address=item["address"],
+                            address=str(item["address"]),
                             data=dumps(item["data"]),
                             indexed=dumps(item["indexed"]),
                             block_number=item["block_number"],
                             block_timestamp=item["block_timestamp"],
-                            block_hash=item["block_hash"],
-                            item_id=item["item_id"],
-                            item_timestamp=item["item_timestamp"],
+                            block_hash=str(item["block_hash"]),
+                            item_id=str(item["item_id"]),
+                            item_timestamp=str(item["item_timestamp"]),
                         )
                     else:
                         # Configure header & key
@@ -122,34 +122,34 @@ class KafkaItemExporter:
                         else:
                             headers.append(("from", bytes("None", "utf-8")))
                         value_object = transactions_raw.transactions_raw(
-                            type=item["type"],
-                            version=item["version"],
-                            from_address=item["from_address"],
-                            to_address=item["to_address"],
+                            type=str(item["type"]),
+                            version=str(item["version"]),
+                            from_address=str(item["from_address"]),
+                            to_address=str(item["to_address"]),
                             value=item["value"],
                             step_limit=item["step_limit"],
-                            timestamp=item["timestamp"],
+                            timestamp=str(item["timestamp"]),
                             block_timestamp=item["block_timestamp"],
                             nid=item["nid"],
                             nonce=item["nonce"],
-                            hash=item["hash"],
+                            hash=str(item["hash"]),
                             transaction_index=item["transaction_index"],
-                            block_hash=item["block_hash"],
+                            block_hash=str(item["block_hash"]),
                             block_number=item["block_number"],
                             fee=item["fee"],
-                            signature=item["signature"],
-                            data_type=item["data_type"],
+                            signature=str(item["signature"]),
+                            data_type=str(item["data_type"]),
                             data=dumps(item["data"]),
                             receipt_cumulative_step_used=item[
                                 "receipt_cumulative_step_used"
                             ],
                             receipt_step_used=item["receipt_step_used"],
                             receipt_step_price=item["receipt_step_price"],
-                            receipt_score_address=item["receipt_score_address"],
-                            receipt_logs=item["receipt_logs"],
+                            receipt_score_address=str(item["receipt_score_address"]),
+                            receipt_logs=str(item["receipt_logs"]),
                             receipt_status=item["receipt_status"],
-                            item_id=item["item_id"],
-                            item_timestamp=item["item_timestamp"],
+                            item_id=str(item["item_id"]),
+                            item_timestamp=str(item["item_timestamp"]),
                         )
 
                     if self.serializers:
