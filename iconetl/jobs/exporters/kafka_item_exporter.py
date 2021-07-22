@@ -149,7 +149,7 @@ class KafkaItemExporter:
                             receipt_logs=str(item["receipt_logs"]),
                             receipt_status=item["receipt_status"],
                             item_id=str(item["item_id"]),
-                            item_timestamp="",
+                            item_timestamp=str(item["item_timestamp"]),
                         )
 
                     if self.serializers:
