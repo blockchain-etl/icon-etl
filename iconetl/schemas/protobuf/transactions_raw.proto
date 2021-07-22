@@ -5,7 +5,7 @@ message transactions_raw {
   string version = 2;
   string from_address = 3;
   string to_address = 4;
-  int64 value = 5;
+  string value = 5;
   int64 step_limit = 6;
   string timestamp = 7;
   int64 block_timestamp = 8;

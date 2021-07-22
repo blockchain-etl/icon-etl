@@ -39,6 +39,7 @@ from google.protobuf.json_format import MessageToJson
 from iconetl.schemas.protobuf_compiled import blocks_raw_pb2 as blocks_raw
 from iconetl.schemas.protobuf_compiled import logs_raw_pb2 as logs_raw
 from iconetl.schemas.protobuf_compiled import transactions_raw_pb2 as transactions_raw
+from iconetl.utils import dec_to_hex
 
 
 class KafkaItemExporter:
@@ -126,7 +127,7 @@ class KafkaItemExporter:
                             version=str(item["version"]),
                             from_address=str(item["from_address"]),
                             to_address=str(item["to_address"]),
-                            value=item["value"],
+                            value=dec_to_hex(["value"]),
                             step_limit=item["step_limit"],
                             timestamp=str(item["timestamp"]),
                             block_timestamp=item["block_timestamp"],
