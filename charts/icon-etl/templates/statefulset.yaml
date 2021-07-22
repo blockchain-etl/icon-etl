@@ -45,7 +45,7 @@ spec:
             - --lag={{ .Values.etl.lag }}
             {{- end }}
             {{- if .Values.etl.providerURI }}
-            - --provider-uri={{ .Values.etl.providerURI | quote }}
+            - --provider-uri={{ .Values.etl.providerURI }}
             {{- end }}
             {{- if .Values.etl.output }}
             - --output={{ .Values.etl.output | quote }}
