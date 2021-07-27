@@ -8,9 +8,10 @@ image:
 
 etl:
   mode: stream
-  output: b-1.kafka-main.ddq5gi.c8.kafka.us-west-2.amazonaws.com:9094
+#  output:
   lag:
-  providerURI: https://icon.geometry-dev.net/api/v3
+#  providerURI: https://icon.geometry-dev.net/api/v3
+  providerURI:
   startBlock:
   startAtHead: true
   entityTypes:
