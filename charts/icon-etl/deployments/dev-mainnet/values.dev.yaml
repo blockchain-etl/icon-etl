@@ -11,7 +11,7 @@ etl:
 #  output:
   lag:
 #  providerURI: https://icon.geometry-dev.net/api/v3
-  providerURI:
+#  providerURI:
   startBlock:
   startAtHead: true
   entityTypes:
