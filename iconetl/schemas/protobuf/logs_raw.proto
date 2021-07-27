@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+message logs_raw {
+  string type = 1;
+  int64 log_index = 2;
+  string transaction_hash = 3;
+  int64 transaction_index = 4;
+  string address = 5;
+  string data = 6;
+  string indexed = 7;
+  int64 block_number = 8;
+  int64 block_timestamp = 9;
+  string block_hash = 10;
+  string item_id = 11;
+  string item_timestamp = 12;
+}

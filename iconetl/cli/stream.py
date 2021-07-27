@@ -161,12 +161,12 @@ from iconetl.providers.auto import get_provider_from_uri
     help="URL for Kafka schema registry. Must use 'http://'. If not specified, schema registry will not be used.",
 )
 @click.option(
-    "--values-as-hex",
+    "--kafka-use-schema-registry",
     default=False,
     show_default=True,
     type=bool,
-    envvar="ICONETL_VALUES_AS_HEX",
-    help="Export ICX (loop) values as hex rather than int.",
+    envvar="ICONETL_KAFKA_USE_SCHEMA_REGISTRY",
+    help="Enable/disable use of schema registry",
 )
 def stream(
     last_synced_block_file,
@@ -181,7 +181,7 @@ def stream(
     kafka_logs_topic,
     kafka_compression_type,
     kafka_schema_registry_url,
-    values_as_hex,
+    kafka_use_schema_registry,
     period_seconds=10,
     batch_size=2,
     block_batch_size=10,
@@ -211,8 +211,8 @@ def stream(
             "log": kafka_logs_topic,
         },
         "compression_type": kafka_compression_type,
+        "enable_schema_registry": kafka_use_schema_registry,
         "schema_registry_url": kafka_schema_registry_url,
-        "values_as_hex": values_as_hex,
     }
 
     streamer_adapter = IcxStreamerAdapter(

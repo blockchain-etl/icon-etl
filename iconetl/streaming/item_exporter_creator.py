@@ -76,69 +76,39 @@ def create_item_exporter(output, kafka_settings):
         )
 
     elif item_exporter_type == ItemExporterType.KAFKA:
-        from json import dumps
-
         from confluent_kafka import Producer
-        from confluent_kafka.admin import AdminClient
         from confluent_kafka.schema_registry import SchemaRegistryClient
+        from confluent_kafka.schema_registry.protobuf import ProtobufSerializer
 
         from iconetl.jobs.exporters.kafka_item_exporter import KafkaItemExporter
-        from iconetl.streaming.icx_json_schema import (
-            create_topic,
-            register_schema,
-            schema_exist,
-            topic_exist,
+        from iconetl.schemas.protobuf_compiled import blocks_raw_pb2 as blocks_raw
+        from iconetl.schemas.protobuf_compiled import logs_raw_pb2 as logs_raw
+        from iconetl.schemas.protobuf_compiled import (
+            transactions_raw_pb2 as transactions_raw,
         )
 
-        # Check for topics, if not exist, create them
-        admin_client = AdminClient({"bootstrap.servers": output})
-        for topic_type, topic_name in kafka_settings["topic_map"].items():
-            if not topic_exist(admin_client, topic_name):
-                create_topic(admin_client, topic_name)
-
-        # If schema registry enabled, verify correct schemas are registered
-        if kafka_settings["schema_registry_url"]:
-            from confluent_kafka.schema_registry.json_schema import JSONSerializer
-
-            from iconetl.streaming.icx_json_schema import get_schema
-
+        if kafka_settings["enable_schema_registry"]:
             registry_client = SchemaRegistryClient(
                 {"url": kafka_settings["schema_registry_url"]}
             )
 
             serializers = {
-                "block": JSONSerializer(
-                    get_schema(kafka_settings["topic_map"]["block"], "block"),
+                "block": ProtobufSerializer(
+                    blocks_raw.blocks_raw,
                     registry_client,
-                    conf={"auto.register.schemas": False},
+                    conf={"auto.register.schemas": True},
                 ),
-                "log": JSONSerializer(
-                    get_schema(kafka_settings["topic_map"]["log"], "log"),
+                "log": ProtobufSerializer(
+                    logs_raw.logs_raw,
                     registry_client,
-                    conf={"auto.register.schemas": False},
+                    conf={"auto.register.schemas": True},
+                ),
+                "transaction": ProtobufSerializer(
+                    transactions_raw.transactions_raw,
+                    registry_client,
+                    conf={"auto.register.schemas": True},
                 ),
             }
-
-            if kafka_settings["values_as_hex"]:
-                serializers["transaction"] = JSONSerializer(
-                    get_schema(
-                        kafka_settings["topic_map"]["transaction_hex"], "transaction"
-                    ),
-                    registry_client,
-                    conf={"auto.register.schemas": False},
-                )
-            else:
-                serializers["transaction"] = JSONSerializer(
-                    get_schema(
-                        kafka_settings["topic_map"]["transaction_int"], "transaction"
-                    ),
-                    registry_client,
-                    conf={"auto.register.schemas": False},
-                )
-
-            for topic_type, topic_name in kafka_settings["topic_map"].items():
-                if not schema_exist(registry_client, topic_name, topic_type):
-                    register_schema(registry_client, topic_name, topic_type)
 
         else:
             serializers = None
@@ -154,7 +124,6 @@ def create_item_exporter(output, kafka_settings):
             producer,
             kafka_settings["topic_map"],
             serializers,
-            kafka_settings["values_as_hex"],
         )
 
     elif item_exporter_type == ItemExporterType.CONSOLE:
