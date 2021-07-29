@@ -4,10 +4,6 @@ metadata:
   name: {{ include "statefulsetName" . }}
   labels:
 {{ include "labels" . | indent 4 }}
-{{- if .Values.deployment.annotations }}
-  annotations:
-{{ tpl .Values.deployment.annotations . | indent 8 }}
-{{- end }}
 spec:
   serviceName: {{ include "statefulsetName" . }}
   replicas: {{ .Values.deployment.replicas }}
@@ -18,6 +14,10 @@ spec:
     metadata:
       labels:
 {{ include "labels" . | indent 8 }}
+{{- if .Values.deployment.annotations }}
+      annotations:
+{{ tpl .Values.deployment.annotations . | indent 8 }}
+{{- end }}
     spec:
       securityContext:
         fsGroup: 1000
