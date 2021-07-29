@@ -1,4 +1,5 @@
 deployment:
+  annotations: null
   replicas: 1
   resources:
     requests:
@@ -28,6 +29,8 @@ etl:
   blockBatchSize: 100
   maxWorkers:
   kafka:
+    cluster_name:
+    strimzi_enabled: false
     topics:
       blocks:
       transactions:
@@ -35,3 +38,7 @@ etl:
     compressionType:
     schemaRegistryURL:
     valuesAsHex: true
+
+service:
+  port: 9401
+  type: ClusterIP

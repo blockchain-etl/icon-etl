@@ -3,4 +3,4 @@ name: icon-etl
 description: Chart to deploy ICON-ETL container
 type: application
 version: 0.0.1
-appVersion: 0.1.4-alpha.4
+appVersion: 0.1.4-alpha.8
