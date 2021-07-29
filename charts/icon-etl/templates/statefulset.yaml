@@ -4,6 +4,10 @@ metadata:
   name: {{ include "statefulsetName" . }}
   labels:
 {{ include "labels" . | indent 4 }}
+{{- if .Values.deployment.annotations }}
+  annotations:
+{{ tpl .Values.deployment.annotations . | indent 8 }}
+{{- end }}
 spec:
   serviceName: {{ include "statefulsetName" . }}
   replicas: {{ .Values.deployment.replicas }}
@@ -27,6 +31,9 @@ spec:
       containers:
         - name: icon-etl
           image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          ports:
+            - containerPort: {{ .Values.service.port }}
+              name: {{ include "metricsService" . }}
           resources:
             requests:
               memory: {{ .Values.deployment.resources.requests.memory | default "512Mi" }}
@@ -48,7 +55,7 @@ spec:
             - --provider-uri={{ .Values.etl.providerURI }}
             {{- end }}
             {{- if .Values.etl.output }}
-            - --output={{ .Values.etl.output | quote }}
+            - --output={{ .Values.etl.output }}
             {{- end }}
             {{- if .Values.etl.startBlock }}
             - --start-block={{ .Values.etl.startBlock }}
@@ -84,7 +91,7 @@ spec:
             - --kafka-compression-type={{ .Values.etl.kafka.compressionType | quote }}
             {{- end }}
             {{- if .Values.etl.kafka.schemaRegistryURL }}
-            - --kafka-schema-registry-url={{ .Values.etl.kafka.schemaRegistryURL | quote }}
+            - --kafka-schema-registry-url={{ .Values.etl.kafka.schemaRegistryURL }}
             {{- end }}
             {{- if .Values.etl.kafka.valuesAsHex }}
             - --values-as-hex={{ .Values.etl.kafka.valuesAsHex }}

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "metricsService" . }}
+  labels:
+{{ include "labels" . | indent 4 }}
+spec:
+  ports:
+    - port: {{ .Values.service.port }}
+      name: metrics
+  selector:
+{{ include "selectorLabels" . | indent 4 }}
+  type: {{ .Values.service.type | default "ClusterIP" }}

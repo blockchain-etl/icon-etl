@@ -36,3 +36,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 {{- define "statefulsetName" -}}
 {{ .Release.Name }}
 {{- end }}
+
+{{- define "metricsService" -}}
+{{ .Release.Name }}
+{{- end }}

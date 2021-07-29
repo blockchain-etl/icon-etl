@@ -1,5 +1,8 @@
 deployment:
   replicas: 1
+  annotations: |
+    'consul.hashicorp.com/connect-inject': 'true'
+    'consul.hashicorp.com/connect-service-upstreams': 'icon-nodes-mainnet-a:9000'
 
 image:
   repository: geometrylabs/iconetl
