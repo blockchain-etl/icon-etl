@@ -1,4 +1,4 @@
-{{- if and (.Values.etl.mode "stream") (.Values.etl.kafka.strimzi_enabled ) }}
+{{- if and (eq .Values.etl.mode "stream") (eq .Values.etl.kafka.strimzi_enabled true) }}
 
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
