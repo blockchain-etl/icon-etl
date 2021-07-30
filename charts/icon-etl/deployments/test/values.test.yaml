@@ -21,11 +21,10 @@ etl:
   blockBatchSize: 100
   maxWorkers:
   kafka:
-    cluster_name:
+    cluster_name: foo-cluster
     strimzi_enabled: true
     compressionType:
-    schemaRegistryURL:
-    valuesAsHex: true
+    schemaRegistryURL: http://sr.svc:8081
 
 service:
   port: 9401
