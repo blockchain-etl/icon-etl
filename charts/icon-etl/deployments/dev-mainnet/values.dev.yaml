@@ -23,7 +23,7 @@ etl:
   blockBatchSize: 100
   maxWorkers:
   kafka:
-    strimzi_enabled: disable
+    strimzi_enabled: false
 #    topics:
 #      blocks:
 #        name: blocks_raw
