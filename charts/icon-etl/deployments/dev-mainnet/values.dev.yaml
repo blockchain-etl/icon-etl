@@ -3,7 +3,6 @@ deployment:
   annotations: |
     'consul.hashicorp.com/connect-inject': 'true'
     'consul.hashicorp.com/connect-service-upstreams': 'icon-nodes-mainnet-a:9000'
-    'consul.hashicorp.com/connect-service-upstreams': 'schema-registry-cp-schema-registry.icon-kafka.svc:9000'
 
 image:
   repository: geometrylabs/iconetl
