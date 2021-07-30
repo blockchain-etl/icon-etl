@@ -4,6 +4,7 @@ apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
   name: {{ .Values.etl.kafka.topics.blocks.name | quote }}
+  namespace: {{ .Values.etl.kafka.cluster_namespace }}
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
@@ -23,6 +24,7 @@ apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
   name: {{ .Values.etl.kafka.topics.transactions.name | quote }}
+  namespace: {{ .Values.etl.kafka.cluster_namespace }}
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
@@ -42,6 +44,7 @@ apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
   name: {{ .Values.etl.kafka.topics.logs.name | quote }}
+  namespace: {{ .Values.etl.kafka.cluster_namespace }}
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
