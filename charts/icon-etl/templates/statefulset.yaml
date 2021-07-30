@@ -79,22 +79,19 @@ spec:
             - --max-workers={{ .Values.etl.maxWorkers }}
             {{- end }}
             {{- if .Values.etl.kafka.topics.blocks }}
-            - --kafka-blocks-topic={{ .Values.etl.kafka.topics.blocks | quote }}
+            - --kafka-blocks-topic={{ .Values.etl.kafka.topics.blocks.name | quote }}
             {{- end }}
             {{- if .Values.etl.kafka.topics.transactions }}
-            - --kafka-transactions-topic={{ .Values.etl.kafka.topics.transactions | quote }}
+            - --kafka-transactions-topic={{ .Values.etl.kafka.topics.transactions.name | quote }}
             {{- end }}
             {{- if .Values.etl.kafka.topics.logs }}
-            - --kafka-logs-topic={{ .Values.etl.kafka.topics.logs | quote }}
+            - --kafka-logs-topic={{ .Values.etl.kafka.topics.logs.name | quote }}
             {{- end }}
             {{- if .Values.etl.kafka.compressionType }}
             - --kafka-compression-type={{ .Values.etl.kafka.compressionType | quote }}
             {{- end }}
             {{- if .Values.etl.kafka.schemaRegistryURL }}
             - --kafka-schema-registry-url={{ .Values.etl.kafka.schemaRegistryURL }}
-            {{- end }}
-            {{- if .Values.etl.kafka.valuesAsHex }}
-            - --values-as-hex={{ .Values.etl.kafka.valuesAsHex }}
             {{- end }}
           {{- end }}
           volumeMounts:

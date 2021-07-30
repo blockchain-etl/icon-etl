@@ -33,8 +33,35 @@ etl:
     strimzi_enabled: false
     topics:
       blocks:
+        name: blocks_raw
+        replicas: 3
+        partitions: 12
+        retention:
+          ms: -1
+          bytes: -1
+        cleanup:
+          policy: compact
+
       transactions:
+        name: transactions_raw
+        replicas: 3
+        partitions: 12
+        retention:
+          ms: -1
+          bytes: -1
+        cleanup:
+          policy: compact
+
       logs:
+        name: logs_raw
+        replicas: 3
+        partitions: 12
+        retention:
+          ms: -1
+          bytes: -1
+        cleanup:
+          policy: compact
+
     compressionType:
     schemaRegistryURL:
     valuesAsHex: true

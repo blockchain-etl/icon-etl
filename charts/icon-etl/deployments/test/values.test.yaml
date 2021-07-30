@@ -2,7 +2,6 @@ deployment:
   replicas: 1
   annotations: |
     'consul.hashicorp.com/connect-inject': 'true'
-    'consul.hashicorp.com/connect-service-upstreams': 'icon-nodes-mainnet-a-rpc:9000'
 
 image:
   repository: geometrylabs/iconetl
@@ -23,11 +22,7 @@ etl:
   maxWorkers:
   kafka:
     cluster_name:
-    strimzi_enabled: false
-    topics:
-      blocks:
-      transactions:
-      logs:
+    strimzi_enabled: true
     compressionType:
     schemaRegistryURL:
     valuesAsHex: true

@@ -3,17 +3,17 @@
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: {{ .Values.etl.kafka.topics.blocks | quote }}
+  name: {{ .Values.etl.kafka.topics.blocks.name | quote }}
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
-  replicas: 3
-  partitions: 12
+  replicas: {{ .Values.etl.kafka.topics.blocks.replicas | quote }}
+  partitions: {{ .Values.etl.kafka.topics.blocks.partitions | quote }}
   config:
-    retention.ms: -1
-    retention.bytes: -1
+    retention.ms: {{ .Values.etl.kafka.topics.blocks.retention.ms | quote }}
+    retention.bytes: {{ .Values.etl.kafka.topics.blocks.retention.bytes | quote }}
     segment.bytes: 1073741824
-    cleanup.policy: delete
+    cleanup.policy: {{ .Values.etl.kafka.topics.blocks.cleanup.policy | quote }}
     min.cleanable.dirty.ratio: 0.5
     preallocate: true
 
@@ -22,17 +22,17 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: {{ .Values.etl.kafka.topics.transactions | quote }}
+  name: {{ .Values.etl.kafka.topics.transactions.name | quote }}
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
-  replicas: 3
-  partitions: 12
+  replicas: {{ .Values.etl.kafka.topics.transactions.replicas | quote }}
+  partitions: {{ .Values.etl.kafka.topics.transactions.partitions | quote }}
   config:
-    retention.ms: -1
-    retention.bytes: -1
+    retention.ms: {{ .Values.etl.kafka.topics.transactions.retention.ms | quote }}
+    retention.bytes: {{ .Values.etl.kafka.topics.transactions.retention.bytes | quote }}
     segment.bytes: 1073741824
-    cleanup.policy: delete
+    cleanup.policy: {{ .Values.etl.kafka.topics.transactions.cleanup.policy | quote }}
     min.cleanable.dirty.ratio: 0.5
     preallocate: true
 
@@ -41,17 +41,17 @@ spec:
 apiVersion: kafka.strimzi.io/v1beta1
 kind: KafkaTopic
 metadata:
-  name: {{ .Values.etl.kafka.topics.logs | quote }}
+  name: {{ .Values.etl.kafka.topics.logs.name | quote }}
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
-  replicas: 3
-  partitions: 12
+  replicas: {{ .Values.etl.kafka.topics.logs.replicas | quote }}
+  partitions: {{ .Values.etl.kafka.topics.logs.partitions | quote }}
   config:
-    retention.ms: -1
-    retention.bytes: -1
+    retention.ms: {{ .Values.etl.kafka.topics.logs.retention.ms | quote }}
+    retention.bytes: {{ .Values.etl.kafka.topics.logs.retention.bytes | quote }}
     segment.bytes: 1073741824
-    cleanup.policy: delete
+    cleanup.policy: {{ .Values.etl.kafka.topics.logs.cleanup.policy | quote }}
     min.cleanable.dirty.ratio: 0.5
     preallocate: true
 

@@ -2,7 +2,8 @@ deployment:
   replicas: 1
   annotations: |
     'consul.hashicorp.com/connect-inject': 'true'
-    'consul.hashicorp.com/connect-service-upstreams': 'icon-nodes-mainnet-a-rpc:9000'
+    'consul.hashicorp.com/connect-service-upstreams': 'icon-nodes-mainnet-a:9000'
+    'consul.hashicorp.com/connect-service-upstreams': 'schema-registry-cp-schema-registry.icon-kafka.svc:9000'
 
 image:
   repository: geometrylabs/iconetl
@@ -23,10 +24,36 @@ etl:
   blockBatchSize: 100
   maxWorkers:
   kafka:
-    topics:
-      blocks: blocks-mainnet-v1
-      transactions: transactions-mainnet-v1
-      logs: logs-mainnet-v1
-    compressionType:
-    schemaRegistryURL:
-    valuesAsHex: true
+    strimzi_enabled: false
+#    topics:
+#      blocks:
+#        name: blocks_raw
+#        replicas: 3
+#        partitions: 12
+#        retention:
+#          ms: -1
+#          bytes: -1
+#        cleanup:
+#          policy: compact
+#
+#      transactions:
+#        name: transactions_raw
+#        replicas: 3
+#        partitions: 12
+#        retention:
+#          ms: -1
+#          bytes: -1
+#        cleanup:
+#          policy: compact
+#
+#      logs:
+#        name: logs_raw
+#        replicas: 3
+#        partitions: 12
+#        retention:
+#          ms: -1
+#          bytes: -1
+#        cleanup:
+#          policy: compact
+#    compressionType:
+#    schemaRegistryURL:
