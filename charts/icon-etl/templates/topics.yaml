@@ -7,8 +7,8 @@ metadata:
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
-  replicas: {{ .Values.etl.kafka.topics.blocks.replicas | quote }}
-  partitions: {{ .Values.etl.kafka.topics.blocks.partitions | quote }}
+  replicas: {{ .Values.etl.kafka.topics.blocks.replicas }}
+  partitions: {{ .Values.etl.kafka.topics.blocks.partitions }}
   config:
     retention.ms: {{ .Values.etl.kafka.topics.blocks.retention.ms | quote }}
     retention.bytes: {{ .Values.etl.kafka.topics.blocks.retention.bytes | quote }}
@@ -26,8 +26,8 @@ metadata:
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
-  replicas: {{ .Values.etl.kafka.topics.transactions.replicas | quote }}
-  partitions: {{ .Values.etl.kafka.topics.transactions.partitions | quote }}
+  replicas: {{ .Values.etl.kafka.topics.transactions.replicas }}
+  partitions: {{ .Values.etl.kafka.topics.transactions.partitions }}
   config:
     retention.ms: {{ .Values.etl.kafka.topics.transactions.retention.ms | quote }}
     retention.bytes: {{ .Values.etl.kafka.topics.transactions.retention.bytes | quote }}
@@ -45,8 +45,8 @@ metadata:
   labels:
     strimzi.io/cluster: {{ .Values.etl.kafka.cluster_name }}
 spec:
-  replicas: {{ .Values.etl.kafka.topics.logs.replicas | quote }}
-  partitions: {{ .Values.etl.kafka.topics.logs.partitions | quote }}
+  replicas: {{ .Values.etl.kafka.topics.logs.replicas }}
+  partitions: {{ .Values.etl.kafka.topics.logs.partitions }}
   config:
     retention.ms: {{ .Values.etl.kafka.topics.logs.retention.ms | quote }}
     retention.bytes: {{ .Values.etl.kafka.topics.logs.retention.bytes | quote }}

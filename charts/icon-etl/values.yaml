@@ -33,7 +33,7 @@ etl:
     strimzi_enabled: false
     topics:
       blocks:
-        name: blocks_raw
+        name: blocks-raw
         replicas: 3
         partitions: 12
         retention:
@@ -43,7 +43,7 @@ etl:
           policy: compact
 
       transactions:
-        name: transactions_raw
+        name: transactions-raw
         replicas: 3
         partitions: 12
         retention:
@@ -53,7 +53,7 @@ etl:
           policy: compact
 
       logs:
-        name: logs_raw
+        name: logs-raw
         replicas: 3
         partitions: 12
         retention:
