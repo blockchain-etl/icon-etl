@@ -64,7 +64,7 @@ spec:
             - --start-at-head={{ .Values.etl.startAtHead }}
             {{- end }}
             {{- if .Values.etl.entityTypes }}
-            - --entity-types={{ .Values.etl.entityTypes | quote }}
+            - --entity-types={{ .Values.etl.entityTypes }}
             {{- end }}
             {{- if .Values.etl.periodSeconds }}
             - --period-seconds={{ .Values.etl.periodSeconds}}
@@ -79,16 +79,16 @@ spec:
             - --max-workers={{ .Values.etl.maxWorkers }}
             {{- end }}
             {{- if .Values.etl.kafka.topics.blocks }}
-            - --kafka-blocks-topic={{ .Values.etl.kafka.topics.blocks.name | quote }}
+            - --kafka-blocks-topic={{ .Values.etl.kafka.topics.blocks.name }}
             {{- end }}
             {{- if .Values.etl.kafka.topics.transactions }}
-            - --kafka-transactions-topic={{ .Values.etl.kafka.topics.transactions.name | quote }}
+            - --kafka-transactions-topic={{ .Values.etl.kafka.topics.transactions.name }}
             {{- end }}
             {{- if .Values.etl.kafka.topics.logs }}
-            - --kafka-logs-topic={{ .Values.etl.kafka.topics.logs.name | quote }}
+            - --kafka-logs-topic={{ .Values.etl.kafka.topics.logs.name }}
             {{- end }}
             {{- if .Values.etl.kafka.compressionType }}
-            - --kafka-compression-type={{ .Values.etl.kafka.compressionType | quote }}
+            - --kafka-compression-type={{ .Values.etl.kafka.compressionType }}
             {{- end }}
             {{- if .Values.etl.kafka.schemaRegistryURL }}
             - --kafka-schema-registry-url={{ .Values.etl.kafka.schemaRegistryURL }}
