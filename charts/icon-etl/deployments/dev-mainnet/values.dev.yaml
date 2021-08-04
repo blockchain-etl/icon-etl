@@ -6,7 +6,7 @@ deployment:
 
 image:
   repository: geometrylabs/iconetl
-  tag: latest
+  tag: "v0.1.4-alpha.8"
   imagePullPolicy: IfNotPresent
 
 etl:
