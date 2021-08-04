@@ -64,8 +64,9 @@ etl:
           policy: compact
 
     compressionType:
-    schemaRegistryURL:
-    valuesAsHex: true
+    schemaRegistry:
+      enabled: false
+      url:
 
 service:
   port: 9401

@@ -91,7 +91,10 @@ spec:
             - --kafka-compression-type={{ .Values.etl.kafka.compressionType }}
             {{- end }}
             {{- if .Values.etl.kafka.schemaRegistryURL }}
-            - --kafka-schema-registry-url={{ .Values.etl.kafka.schemaRegistryURL }}
+            - --kafka-schema-registry-url={{ .Values.etl.kafka.schemaRegistry.url }}
+            {{- end }}
+            {{- if .Values.etl.kafka.schemaRegistryURL }}
+            - --kafka-use-schema-registry={{ .Values.etl.kafka.schemaRegistry.enabled }}
             {{- end }}
           {{- end }}
           volumeMounts:
