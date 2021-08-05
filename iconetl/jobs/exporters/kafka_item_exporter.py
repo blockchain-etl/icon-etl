@@ -71,7 +71,7 @@ class KafkaItemExporter:
                         key = bytes(str(item["number"]), "utf-8")
                         headers.append(("hash", bytes(item["hash"], "utf-8")))
                         # Create blocks_raw object
-                        value_object = blocks_raw.blocks_raw(
+                        value_object = blocks_raw.BlockRaw(
                             type=str(item["type"]),
                             number=item["number"],
                             hash=str(item["hash"]),
@@ -93,7 +93,7 @@ class KafkaItemExporter:
                             ("hash", bytes(item["transaction_hash"], "utf-8"))
                         )
                         # Create logs_raw object
-                        value_object = logs_raw.logs_raw(
+                        value_object = logs_raw.LogRaw(
                             type=str(item["type"]),
                             log_index=item["log_index"],
                             transaction_hash=str(item["transaction_hash"]),
@@ -122,7 +122,7 @@ class KafkaItemExporter:
                             )
                         else:
                             headers.append(("from", bytes("None", "utf-8")))
-                        value_object = transactions_raw.transactions_raw(
+                        value_object = transactions_raw.TransactionRaw(
                             type=str(item["type"]),
                             version=str(item["version"]),
                             from_address=str(item["from_address"]),

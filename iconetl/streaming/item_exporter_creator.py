@@ -94,17 +94,17 @@ def create_item_exporter(output, kafka_settings):
 
             serializers = {
                 "block": ProtobufSerializer(
-                    blocks_raw.blocks_raw,
+                    blocks_raw.BlockRaw,
                     registry_client,
                     conf={"auto.register.schemas": True},
                 ),
                 "log": ProtobufSerializer(
-                    logs_raw.logs_raw,
+                    logs_raw.LogRaw,
                     registry_client,
                     conf={"auto.register.schemas": True},
                 ),
                 "transaction": ProtobufSerializer(
-                    transactions_raw.transactions_raw,
+                    transactions_raw.TransactionRaw,
                     registry_client,
                     conf={"auto.register.schemas": True},
                 ),

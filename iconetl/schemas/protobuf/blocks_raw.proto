@@ -1,17 +1,17 @@
 syntax = "proto3";
 
-message blocks_raw {
-  string type = 1;
-  int64 number = 2;
-  string hash = 3;
-  string parent_hash = 4;
-  string merkle_root_hash = 5;
-  int64 timestamp = 6;
-  string version = 7;
-  int64 transaction_count = 8;
-  string peer_id = 9;
-  string signature = 10;
-  string next_leader = 11;
-  string item_id = 12;
-  string item_timestamp = 13;
+message BlockRaw {
+  string signature = 1;
+  string item_id = 2;
+  string next_leader = 3;
+  uint32 transaction_count = 4;
+  string type = 5;
+  string version = 6;
+  string peer_id = 7;
+  uint32 number = 8;
+  string merkle_root_hash = 9;
+  string item_timestamp = 10;
+  string hash = 11;
+  string parent_hash = 12;
+  uint64 timestamp = 13;
 }

@@ -18,21 +18,21 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     syntax="proto3",
     serialized_options=None,
     create_key=_descriptor._internal_create_key,
-    serialized_pb=b'\n\x10\x62locks_raw.proto"\x88\x02\n\nblocks_raw\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\x0e\n\x06number\x18\x02 \x01(\x03\x12\x0c\n\x04hash\x18\x03 \x01(\t\x12\x13\n\x0bparent_hash\x18\x04 \x01(\t\x12\x18\n\x10merkle_root_hash\x18\x05 \x01(\t\x12\x11\n\ttimestamp\x18\x06 \x01(\x03\x12\x0f\n\x07version\x18\x07 \x01(\t\x12\x19\n\x11transaction_count\x18\x08 \x01(\x03\x12\x0f\n\x07peer_id\x18\t \x01(\t\x12\x11\n\tsignature\x18\n \x01(\t\x12\x13\n\x0bnext_leader\x18\x0b \x01(\t\x12\x0f\n\x07item_id\x18\x0c \x01(\t\x12\x16\n\x0eitem_timestamp\x18\r \x01(\tb\x06proto3',
+    serialized_pb=b'\n\x10\x62locks_raw.proto"\x86\x02\n\x08\x42lockRaw\x12\x11\n\tsignature\x18\x01 \x01(\t\x12\x0f\n\x07item_id\x18\x02 \x01(\t\x12\x13\n\x0bnext_leader\x18\x03 \x01(\t\x12\x19\n\x11transaction_count\x18\x04 \x01(\r\x12\x0c\n\x04type\x18\x05 \x01(\t\x12\x0f\n\x07version\x18\x06 \x01(\t\x12\x0f\n\x07peer_id\x18\x07 \x01(\t\x12\x0e\n\x06number\x18\x08 \x01(\r\x12\x18\n\x10merkle_root_hash\x18\t \x01(\t\x12\x16\n\x0eitem_timestamp\x18\n \x01(\t\x12\x0c\n\x04hash\x18\x0b \x01(\t\x12\x13\n\x0bparent_hash\x18\x0c \x01(\t\x12\x11\n\ttimestamp\x18\r \x01(\x04\x62\x06proto3',
 )
 
 
-_BLOCKS_RAW = _descriptor.Descriptor(
-    name="blocks_raw",
-    full_name="blocks_raw",
+_BLOCKRAW = _descriptor.Descriptor(
+    name="BlockRaw",
+    full_name="BlockRaw",
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
     create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
-            name="type",
-            full_name="blocks_raw.type",
+            name="signature",
+            full_name="BlockRaw.signature",
             index=0,
             number=1,
             type=9,
@@ -50,15 +50,15 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="number",
-            full_name="blocks_raw.number",
+            name="item_id",
+            full_name="BlockRaw.item_id",
             index=1,
             number=2,
-            type=3,
-            cpp_type=2,
+            type=9,
+            cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=0,
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -69,8 +69,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="hash",
-            full_name="blocks_raw.hash",
+            name="next_leader",
+            full_name="BlockRaw.next_leader",
             index=2,
             number=3,
             type=9,
@@ -88,15 +88,15 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="parent_hash",
-            full_name="blocks_raw.parent_hash",
+            name="transaction_count",
+            full_name="BlockRaw.transaction_count",
             index=3,
             number=4,
-            type=9,
-            cpp_type=9,
+            type=13,
+            cpp_type=3,
             label=1,
             has_default_value=False,
-            default_value=b"".decode("utf-8"),
+            default_value=0,
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -107,8 +107,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="merkle_root_hash",
-            full_name="blocks_raw.merkle_root_hash",
+            name="type",
+            full_name="BlockRaw.type",
             index=4,
             number=5,
             type=9,
@@ -126,15 +126,15 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="timestamp",
-            full_name="blocks_raw.timestamp",
+            name="version",
+            full_name="BlockRaw.version",
             index=5,
             number=6,
-            type=3,
-            cpp_type=2,
+            type=9,
+            cpp_type=9,
             label=1,
             has_default_value=False,
-            default_value=0,
+            default_value=b"".decode("utf-8"),
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -145,8 +145,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="version",
-            full_name="blocks_raw.version",
+            name="peer_id",
+            full_name="BlockRaw.peer_id",
             index=6,
             number=7,
             type=9,
@@ -164,12 +164,12 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="transaction_count",
-            full_name="blocks_raw.transaction_count",
+            name="number",
+            full_name="BlockRaw.number",
             index=7,
             number=8,
-            type=3,
-            cpp_type=2,
+            type=13,
+            cpp_type=3,
             label=1,
             has_default_value=False,
             default_value=0,
@@ -183,8 +183,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="peer_id",
-            full_name="blocks_raw.peer_id",
+            name="merkle_root_hash",
+            full_name="BlockRaw.merkle_root_hash",
             index=8,
             number=9,
             type=9,
@@ -202,8 +202,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="signature",
-            full_name="blocks_raw.signature",
+            name="item_timestamp",
+            full_name="BlockRaw.item_timestamp",
             index=9,
             number=10,
             type=9,
@@ -221,8 +221,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="next_leader",
-            full_name="blocks_raw.next_leader",
+            name="hash",
+            full_name="BlockRaw.hash",
             index=10,
             number=11,
             type=9,
@@ -240,8 +240,8 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="item_id",
-            full_name="blocks_raw.item_id",
+            name="parent_hash",
+            full_name="BlockRaw.parent_hash",
             index=11,
             number=12,
             type=9,
@@ -259,15 +259,15 @@ _BLOCKS_RAW = _descriptor.Descriptor(
             create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
-            name="item_timestamp",
-            full_name="blocks_raw.item_timestamp",
+            name="timestamp",
+            full_name="BlockRaw.timestamp",
             index=12,
             number=13,
-            type=9,
-            cpp_type=9,
+            type=4,
+            cpp_type=4,
             label=1,
             has_default_value=False,
-            default_value=b"".decode("utf-8"),
+            default_value=0,
             message_type=None,
             enum_type=None,
             containing_type=None,
@@ -287,22 +287,22 @@ _BLOCKS_RAW = _descriptor.Descriptor(
     extension_ranges=[],
     oneofs=[],
     serialized_start=21,
-    serialized_end=285,
+    serialized_end=283,
 )
 
-DESCRIPTOR.message_types_by_name["blocks_raw"] = _BLOCKS_RAW
+DESCRIPTOR.message_types_by_name["BlockRaw"] = _BLOCKRAW
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-blocks_raw = _reflection.GeneratedProtocolMessageType(
-    "blocks_raw",
+BlockRaw = _reflection.GeneratedProtocolMessageType(
+    "BlockRaw",
     (_message.Message,),
     {
-        "DESCRIPTOR": _BLOCKS_RAW,
+        "DESCRIPTOR": _BLOCKRAW,
         "__module__": "blocks_raw_pb2"
-        # @@protoc_insertion_point(class_scope:blocks_raw)
+        # @@protoc_insertion_point(class_scope:BlockRaw)
     },
 )
-_sym_db.RegisterMessage(blocks_raw)
+_sym_db.RegisterMessage(BlockRaw)
 
 
 # @@protoc_insertion_point(module_scope)
