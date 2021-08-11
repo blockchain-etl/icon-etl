@@ -73,6 +73,9 @@ from iconetl.providers.auto import get_provider_from_uri
     "-s", "--start-block", default=None, show_default=True, type=int, help="Start block"
 )
 @click.option(
+    "-s", "--end-block", default=None, show_default=True, type=int, help="End block"
+)
+@click.option(
     "--start-at-head",
     default=False,
     show_default=True,
@@ -174,6 +177,7 @@ def stream(
     provider_uri,
     output,
     start_block,
+    end_block,
     start_at_head,
     entity_types,
     kafka_blocks_topic,
@@ -229,6 +233,7 @@ def stream(
         last_synced_block_file=last_synced_block_file,
         lag=lag,
         start_block=start_block,
+        end_block=end_block,
         period_seconds=period_seconds,
         block_batch_size=block_batch_size,
         pid_file=pid_file,
